@@ -1,0 +1,1 @@
+var ngValidationSummary = angular.module('ngValidationSummary'.[]);

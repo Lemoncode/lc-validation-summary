@@ -15,6 +15,15 @@ module.exports = function(grunt) {
 			}
 		},
 
+	    ngtemplates: {
+	    	ngValidationSummary: {
+	    		module:'ngValidationSummary',
+	    		standalone: false,
+	    		src:['./src/directives/*.html'],
+	    		dest: './build/ngvalidationSummary-tpl.js'
+	    	}
+	    },
+
 		concat: {
 			dist: {
 				src: ['./src/namespace.js', './src/directives/*.js', './src/services/*.js'],
@@ -53,7 +62,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', ['build']);
 	
-	grunt.registerTask('build', ['clean', 'concat', 'ngmin','uglify', 'copy']);
+	grunt.registerTask('build', ['clean', 'ngtemplates', 'concat', 'ngmin','uglify', 'copy']);
 
 	grunt.registerTask('test', ['karma']);	
 	
@@ -63,5 +72,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-contrib-concat');
-
+    grunt.loadNpmTasks('grunt-angular-templates');
 };

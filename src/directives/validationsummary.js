@@ -2,7 +2,7 @@
     return {
         restrict: "A",
         require: "^validationsContainer",
-        templateUrl: 'app/common/directives/validationsummary.html',
+        templateUrl: './src/directives/validationsummary.html',
 
         link: function (scope, element, attr, ctrl) {
             var valContainer = ctrl;

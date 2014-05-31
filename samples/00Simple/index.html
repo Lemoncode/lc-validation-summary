@@ -8,6 +8,7 @@
 <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
 <script src="https://code.angularjs.org/1.2.16/angular-animate.js"></script>
 <script src="../../build/ngvalidationsummary.js"></script>
+<script src="../../build/ngvalidationSummary-tpl.js"></script>
 <script src="app.js"></script>
 
 </head>
@@ -22,7 +23,7 @@
                     	    name="userName" 
                     	    class="form-control col-md-12"
                             type="text" 
-                            ng-model="model.name" 
+                            ng-model="name" 
                             ng-required="true"
                             validationbubble="" 
                             friendlyname="User name" />
@@ -36,15 +37,15 @@
                            name="userSurname" 
                            class="form-control col-md-12"
                            type="text" 
-                           ng-model="model.lastname" 
+                           ng-model="lastname" 
                            validationbubble="" 
                            friendlyname="User surname" />
                 </div>
             </div>
 
     </form>
-
- 	<p>{{testBinding}}</p>
+	<div validationsummary=""></div>
+ 
  </div> 
 </body>
 

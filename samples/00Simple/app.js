@@ -1,8 +1,6 @@
-var sampleApp = angular.module('sampleApp', [])
+var sampleApp = angular.module('sampleApp', ['ngValidationSummary'])
 
-.controller('sampleController', ['$scope', function sampleController($scope){
-	$scope.testBinding = "test";
-
+.controller('sampleController', ['$scope', function sampleController($scope){	
 	$scope.model = {
 		name: 'John',
 		lastname: 'Doe'

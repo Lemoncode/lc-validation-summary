@@ -14,12 +14,19 @@ module.exports = function(grunt) {
 			   ]
 			}
 		},
-		
+
+		concat: {
+			dist: {
+				src: ['./src/namespace.js', './src/directives/*.js', './src/services/*.js'],
+				dest: './build/ngvalidationsummary.js'
+			}
+		},
+
 		ngmin: {
 			all: {
 				files: [
 					{												
-						src: ['./src/**/*.js'],
+						src: ['./build/ngvalidationsummary.js'],
 						dest: './build/ngvalidationsummary.js',
 						ext: '.js'
 					}
@@ -45,8 +52,8 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('default', ['build']);
-
-	grunt.registerTask('build', ['clean', 'ngmin', 'uglify', 'copy']);
+	
+	grunt.registerTask('build', ['clean', 'concat', 'ngmin','uglify', 'copy']);
 
 	grunt.registerTask('test', ['karma']);	
 	
@@ -55,5 +62,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-karma');
+	grunt.loadNpmTasks('grunt-contrib-concat');
 
 };

@@ -1,0 +1,51 @@
+<html>
+
+<head>
+<title>ngValidationSummary - Sample 00 Basic summary</title>
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+
+<script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+<script src="https://code.angularjs.org/1.2.16/angular-animate.js"></script>
+<script src="../../build/ngvalidationsummary.js"></script>
+<script src="app.js"></script>
+
+</head>
+
+<body ng-app="sampleApp">
+ <div ng-controller="sampleController" validations-container>
+    <form name="userForm">
+            <div class="form-group">
+                <label class="col-sm-1 control-label" for="userName">Name:</label>
+                <div class="col-sm-4">
+                    <input id="userName" 
+                    	    name="userName" 
+                    	    class="form-control col-md-12"
+                            type="text" 
+                            ng-model="model.name" 
+                            ng-required="true"
+                            validationbubble="" 
+                            friendlyname="User name" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label" for="userSurname">Surname:</label>
+                <div class="col-sm-4">
+                    <input id="userSurname" 
+                           name="userSurname" 
+                           class="form-control col-md-12"
+                           type="text" 
+                           ng-model="model.lastname" 
+                           validationbubble="" 
+                           friendlyname="User surname" />
+                </div>
+            </div>
+
+    </form>
+
+ 	<p>{{testBinding}}</p>
+ </div> 
+</body>
+
+</html>

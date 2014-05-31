@@ -1,0 +1,26 @@
+{
+  "name": "ValSummary",
+  "version": "0.0.1",
+  "description": "ValSummary Grunt Build",
+  "main": "gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lemoncode/ngValidationSummary.git"
+  },
+  "author": "Braulio Diez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lemoncode/ngValidationSummary/issues"
+  },
+  "homepage": "https://github.com/Lemoncode/ngValidationSummary",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.5.0"
+  }
+}

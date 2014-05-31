@@ -7,6 +7,14 @@ module.exports = function(grunt) {
 			}
 		},
 
+		copy: {
+			main: {
+			   files: [
+					{expand: true, flatten: true, src: ['./css/ngValidationSummary.css'], dest: './build/',  filter: 'isFile'}			   
+			   ]
+			}
+		},
+		
 		ngmin: {
 			all: {
 				files: [
@@ -28,16 +36,16 @@ module.exports = function(grunt) {
 					}
 				]
 			}
-		},
-
+		},		
 	});
 
 	grunt.registerTask('default', ['build']);
 
-	grunt.registerTask('build', ['clean', 'ngmin', 'uglify']);
+	grunt.registerTask('build', ['clean', 'ngmin', 'uglify', 'copy']);
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-ngmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 
 };

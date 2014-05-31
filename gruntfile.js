@@ -17,14 +17,27 @@ module.exports = function(grunt) {
 					}
 				]
 			}
-		}
+		},
+
+		uglify: {
+			all: {
+				files: [
+					{						
+						src: ['./build/ngvalidationsummary.js'],
+						dest: './build/ngvalidatinsummary.min.js',						
+					}
+				]
+			}
+		},
+
 	});
 
 	grunt.registerTask('default', ['build']);
 
-	grunt.registerTask('build', ['clean', 'ngmin']);
+	grunt.registerTask('build', ['clean', 'ngmin', 'uglify']);
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-ngmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
 };

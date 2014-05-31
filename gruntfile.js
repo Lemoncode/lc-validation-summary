@@ -36,16 +36,24 @@ module.exports = function(grunt) {
 					}
 				]
 			}
-		},		
+		},	
+		karma: {
+			unit: {
+				configFile: './test/karma.conf.js',				
+			}
+		}		
 	});
 
 	grunt.registerTask('default', ['build']);
 
 	grunt.registerTask('build', ['clean', 'ngmin', 'uglify', 'copy']);
 
+	grunt.registerTask('test', ['karma']);	
+	
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-ngmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-karma');
 
 };

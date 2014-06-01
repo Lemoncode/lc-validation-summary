@@ -15,6 +15,15 @@ module.exports = function(grunt) {
 			}
 		},
 
+		connect: {
+		    server: {
+		      options: {
+		      	hostname: 'localhost',
+		        port: 8080		        
+		      }
+		    }
+		 },
+
 	    ngtemplates: {
 	    	ngValidationSummary: {
 	    		module:'ngValidationSummary',
@@ -60,12 +69,14 @@ module.exports = function(grunt) {
 		}		
 	});
 
-	grunt.registerTask('default', ['build']);
+	grunt.registerTask('default', ['web']);
 	
 	grunt.registerTask('build', ['clean', 'ngtemplates', 'concat', 'ngmin','uglify', 'copy']);
 
 	grunt.registerTask('test', ['karma']);	
 	
+	grunt.registerTask('web',['connect']);
+
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-ngmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -73,4 +84,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-angular-templates');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 };

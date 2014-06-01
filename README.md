@@ -1,7 +1,13 @@
 ngValidationSummary
+
 ===================
 
 
-Angular directive for providing a validation summary to angular based forms.
+
+
+ngValidationSummary is a customizable AngularJS directive providing a container with all the required fields in a web form section.
+
+Take a look at the samples included with the source code to see it in action.
+
 
 *work in progress* .  

@@ -11,11 +11,7 @@ Take a look at the samples included with the source code to see it in action.
 To use and play with this plugin, make sure you have installed node package manager and then just type in this command:
 
 ```shell
-
-
 npm install --dev
-
-
 ```
 
 This will download all the node modules needed.

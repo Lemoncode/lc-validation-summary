@@ -76,7 +76,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('test', ['karma']);	
 	
-	grunt.registerTask('web',['connect']);
+	grunt.registerTask('web', ['connect']);
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-ngmin');

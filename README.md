@@ -14,6 +14,6 @@ To use and play with this plugin, make sure you have installed node package mana
 npm install --dev
 ```
 
-This will download all the node modules needed.
+This will download all the node modules referenced both in dependencies and in devDependencies.
 
 *work in progress* .  

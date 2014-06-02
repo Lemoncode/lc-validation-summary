@@ -4,6 +4,10 @@ ngValidationSummary.provider('validationContainerService', function () {
         {
             type: 'required',
             friendlyDescription: "this field is mandatory"
+        },
+        {
+            type: 'pattern',
+            friendlyDescription: "this field doesn't match the pattern set"
         }
     ];
 

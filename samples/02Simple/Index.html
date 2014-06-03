@@ -10,66 +10,69 @@
 	<script src="https://code.angularjs.org/1.2.16/angular-animate.js"></script>
 	<script src="../../build/ngvalidationsummary.js"></script>
 	<script src="../../build/ngvalidationSummary-tpl.js"></script>
-<!-- 	// <script src="directives/checktwofieldsmatch.js"></script> -->
-	<script src="app.js"></script>
+	<!-- 	// <script src="directives/checktwofieldsmatch.js"></script>
+-->
+<script src="app.js"></script>
 
 </head>
 
 <body ng-app="sampleApp" class="container">
-	<div class="page-header">
-		<h2>
-			ngValidationSummary
-			<small>Sample 02 - Validation using a custom directive</small>
-		</h2>
-	</div>
-	<div class="voffset6">
-		<div ng-controller="sampleController" validations-container>
-			<form name="userForm">
+<div class="page-header">
+	<h2>
+		ngValidationSummary
+		<small>Sample 02 - Validation using a custom directive</small>
+	</h2>
+</div>
+<div class="voffset6">
+	<div ng-controller="sampleController" validations-container>
+		<form name="userForm">
 
-				<div class="col-xs-12 col-sm-12 col-lg-12 voffset1" data-ng-show="token==undefined">
-					<div class="col-sm-6 col-md-3">
-						<label for="entryScreenEmail">Email</label>
+			<div class="col-xs-12 col-sm-12 col-lg-12 voffset1">
+				<div class="col-sm-6 col-md-3">
+					<label for="entryScreenEmail">Email</label>
 
-						<input id="entryScreenEmail"
+					<input id="entryScreenEmail"
                                                 class="form-control col-md-12"
                                                 type="text"
                                                 placeholder="Email"
                                                 name="entryScreenEmail"
-                                                data-ng-model="model.email"
+                                                ng-model="model.email"
                                                 validationbubble=""
-                                                checkvalidationemail=""
                                                 friendlyname="Email"
                                                 ng-required="true"
                                                  />
+                                                 <!-- checkvalidationemail="" -->
 
-					</div>
+				</div>
 
-					<div class="col-sm-6 col-md-3">
-						<label for="entryScreenConfirmationEmail">
-							Confirm Email
-							<span>*</span>
-						</label>
-						<div>
-							<input id="entryScreenConfirmationEmail"
+				<div class="col-sm-6 col-md-3">
+					<label for="entryScreenConfirmationEmail">
+						Confirm Email
+						<span>*</span>
+					</label>
+					<div>
+						<input id="entryScreenConfirmationEmail"
                                             class="form-control col-md-12"
                                             type="text"
                                             placeholder="Confirm Email"
                                             name="entryScreenConfirmationEmail"
                                             ng-model="model.confirmationEmail"
                                             validationbubble=""
+                                            friendlyname="Confirm Email"
+                                            
+                                            />
+                                             <!--
+                                             fieldtomatchmodelproperty="model.email" 
                                             checktwofieldsmatch="true"
                                             checkvalidationemail=""
-                                            fieldtomatch="model.email"
-                                            friendlyname="Confirm Email"
-                                            fieldtomatchmodelproperty="model.email"
-                                            />
-						</div>
+                                            fieldtomatch="model.email" -->
 					</div>
 				</div>
+			</div>
 
-			</form>
-			<div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8" validationsummary=""></div>
-		</div>
+		</form>
+		<div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8" validationsummary=""></div>
 	</div>
+</div>
 </body>
 </html>

@@ -1,0 +1,76 @@
+<html>
+
+<head>
+  <title>ngValidationSummary - Sample 01 Set of validations</title>
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../build/ngValidationSummary.css" />
+
+  <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+  <script src="https://code.angularjs.org/1.2.16/angular-animate.js"></script>
+  <script src="../../build/ngvalidationsummary.js"></script>
+  <script src="../../build/ngvalidationSummary-tpl.js"></script>
+  <script src="app.js"></script>
+
+</head>
+
+<body ng-app="sampleApp" class="container">
+<div class="page-header"><h2>ngValidationSummary<small> Sample 01 - Set of validations</small></h2></div>
+<div class="voffset6">
+  <div ng-controller="sampleController" validations-container>
+    <form name="userForm">
+    
+      <div class="form-group">
+        
+        <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
+          <label for="nickName">NickName: <small>Maximum length = 8</small></label>
+          <input id="nickName" 
+                   name="nickName" 
+                   class="form-control col-md-12"
+                   type="text" 
+                   ng-model="model.nickName"
+                   validationbubble=""
+                   ng-maxlength="8"
+                   friendlyname="Nickname" />
+        </div>
+        <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
+          <label for="password">Password: <small>Minimum length = 6</small></label>
+          <input id="password" 
+                   name="password" 
+                   class="form-control col-md-12"
+                   type="text" 
+                   ng-model="model.password"
+                   validationbubble=""
+                   ng-minlength="6"
+                   friendlyname="Password" />
+        </div>
+        <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
+          <label for="email">Email: <small>Required field</small></label>
+          <input   type="email"
+                   id="email" 
+                   name="email" 
+                   class="form-control col-md-12"
+                   ng-model="model.email"
+                   validationbubble=""
+                   ng-required="true"
+                   friendlyname="Email" />
+        </div>
+        <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
+          <label for="phoneNumber">Phone number: <small>Pattern = /^\d{10}$/</small></label>
+          <input   id="phoneNumber" 
+                   name="phoneNumber" 
+                   class="form-control col-md-12"
+                   type="text" 
+                   ng-model="model.phoneNumber"
+                   ng-pattern="/^\d{10}$/"
+                   validationbubble=""
+                   friendlyname="Phone number" />
+        </div>
+      </div>
+    
+    </form>
+    <div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8" validationsummary=""></div>
+  </div>
+</div>
+</body>
+</html>

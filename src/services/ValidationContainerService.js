@@ -4,6 +4,18 @@ ngValidationSummary.provider('validationContainerService', function () {
         {
             type: 'required',
             friendlyDescription: "this field is mandatory"
+        },
+        {
+            type: 'pattern',
+            friendlyDescription: "this field doesn't match the pattern set"
+        },
+        {
+            type: 'maxlength',
+            friendlyDescription: "this field exceeds the maximum length"
+        },
+        {
+            type: 'minlength',
+            friendlyDescription: "this field doesn't reach the minimum length"
         }
     ];
 

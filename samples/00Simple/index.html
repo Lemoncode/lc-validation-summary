@@ -14,8 +14,10 @@
 
 </head>
 
-<body ng-app="sampleApp">
- <div ng-controller="sampleController" validations-container>
+<body ng-app="sampleApp" class="container">
+<div class="page-header"><h2>ngValidationSummary<small> Sample 00 - Basic summary</small></h2></div>
+<div class="voffset6">
+ <div ng-controller="sampleController" validations-container="">
     <form name="userForm">
             <div class="form-group">
                 <label class="col-sm-1 control-label" for="userName">Name:</label>
@@ -49,6 +51,7 @@
 	<div validationsummary=""></div>
  
  </div> 
+</div>
 </body>
 
 </html>

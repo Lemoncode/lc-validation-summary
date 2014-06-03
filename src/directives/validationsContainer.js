@@ -10,7 +10,7 @@
             this.getValidationMessages = function () {
                 return $scope.validationMessages;
             },
-            this.$updateValidationResult = function (ctrl, friendlyControlName) {
+            this.$updateValidationResult = function (ctrl, friendlyControlName, customerrordirective, customerrormessage) {
                 var validationKeys = validationContainerService.extractValidations(ctrl);                
 
                 angular.forEach(validationKeys, function (value, key) {
@@ -27,7 +27,7 @@
                         // Search in the master list of errors and add the entry if it doesn't exists
                         if (!entryExistsInValidationMessage) {
                             // Add element, push
-                            var item = validationContainerService.buildValidationSummaryEntry(currentValidationKey, friendlyControlName, value.validationType);
+                            var item = validationContainerService.buildValidationSummaryEntry(currentValidationKey, friendlyControlName, value.validationType, customerrordirective, customerrormessage);
                             $scope.validationMessages.push(item);
                         }
                     }

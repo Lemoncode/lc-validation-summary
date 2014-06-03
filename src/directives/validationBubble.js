@@ -29,6 +29,8 @@
             var form = ctrls[1];        
             var validationsContainer = ctrls[2];
             var friendlyname = attr.friendlyname;
+            var customerrordirective =  attr.customerrordirective;
+            var customerrormessage = attr.customerrormessage;
 
             checkDirectivePrerequisites(attr, form, validationsContainer);
             
@@ -36,7 +38,7 @@
 
             scope.$watch(propertyToWatch, function (isValid, lastValue) {
                 if (typeof isValid !== "undefined") {
-                    validationsContainer.$updateValidationResult(model, friendlyname);
+                    validationsContainer.$updateValidationResult(model, friendlyname, customerrordirective, customerrormessage);
                 }
             });
         }

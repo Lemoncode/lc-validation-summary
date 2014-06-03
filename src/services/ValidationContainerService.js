@@ -66,12 +66,17 @@ ngValidationSummary.provider('validationContainerService', function () {
                     return validationText;
                 },
 
-                buildValidationSummaryEntry: function(validationKey, controlFriendlyName, validation) {
+                buildValidationSummaryEntry: function(validationKey, controlFriendlyName, validation, customerrordirective, customerrormessage) {
                     var item = {};
 
                     item.key = validationKey;
-                    item.errorMessage = this.buildValidationFriendlyMessage(controlFriendlyName, validation);
 
+                    if(typeof customerrordirective != 'undefined' && customerrordirective == validation) {
+                        item.errorMessage = customerrormessage;    
+                    } else {
+                        item.errorMessage = this.buildValidationFriendlyMessage(controlFriendlyName, validation);    
+                    }
+                    
                     return item;
                 }
             };

@@ -47,6 +47,24 @@
 }
 /*<#validation summary styles>*/
 
+/*<=validation styles>*/
+.validation-form-style input.ng-invalid {
+    background-color:#FFD0CB;
+}
+
+.validation-form-style input.ng-valid.ng-dirty {
+    background-color:#E1FFF0;
+}
+
+.validation-form-style select.ng-invalid {
+    background-color:#FFD0CB;
+}
+
+.validation-form-style select.ng-valid.ng-dirty {
+    background-color:#E1FFF0;
+}
+/*<#validation styles>*/
+
 /*<=voffset>*/
 
 .voffset {

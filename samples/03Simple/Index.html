@@ -1,0 +1,84 @@
+<html>
+
+<head>
+  <title>ngValidationSummary - Sample 03 Custom Validation Message</title>
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../build/ngValidationSummary.css" />
+
+  <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+  <script src="https://code.angularjs.org/1.2.16/angular-animate.js"></script>
+  <script src="../../build/ngvalidationsummary.js"></script>
+  <script src="../../build/ngvalidationSummary-tpl.js"></script>
+  <script src="app.js"></script>
+
+</head>
+
+<body ng-app="sampleApp" class="container">
+<div class="page-header"><h2>ngValidationSummary<small> Sample 03 - Using custom Validation Messages</small></h2></div>
+<div class="voffset6">
+  <div ng-controller="sampleController" validations-container>
+    <form name="userForm">
+    
+      <div class="form-group">
+        
+        <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
+          <label for="alias">Alias: <small>String pattern with custom message</small></label>
+          <input id="alias" 
+                   name="alias" 
+                   class="form-control col-md-12"
+                   type="text" 
+                   ng-model="model.alias"
+                   validationbubble=""
+                   ng-pattern="/(^\D{4})+(\d{2})$/"
+                   customerrordirective="pattern"
+                   customerrormessage="Alias: An alias must be composed by 4 characters and 2 digits."
+                   friendlyname="Alias" />
+        </div>
+        <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
+          <label for="password">Password: <small>Minimum length with custom message</small></label>
+          <input id="password" 
+                   name="password" 
+                   class="form-control col-md-12"
+                   type="text" 
+                   ng-model="model.password"
+                   validationbubble=""
+                   ng-minlength="6"
+                   customerrordirective="minlength"
+                   customerrormessage="Password: Must be at least 6 characters long."
+                   friendlyname="Password" />
+        </div>
+        <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
+          <label for="email">Email: <small>String pattern with custom message</small></label>
+          <input   type="email"
+                   id="email" 
+                   name="email" 
+                   class="form-control col-md-12"
+                   ng-model="model.email"
+                   validationbubble=""
+                   ng-pattern="/(^\S{1,})+(@gmail\.com)/"
+                   customerrordirective="pattern"
+                   customerrormessage="Email: Must ve a valid Gmail account."
+                   friendlyname="Email" />
+        </div>
+        <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
+          <label for="phoneNumber">Phone number: <small>String pattern with custom message</small></label>
+          <input   id="phoneNumber" 
+                   name="phoneNumber" 
+                   class="form-control col-md-12"
+                   type="text" 
+                   ng-model="model.phoneNumber"
+                   ng-pattern="/^\d{10}$/"
+                   customerrordirective="pattern"
+                   customerrormessage="Phone number: Must be formed by 10 digits"
+                   validationbubble=""
+                   friendlyname="Phone number" />
+        </div>
+      </div>
+    
+    </form>
+    <div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8" validationsummary=""></div>
+  </div>
+</div>
+</body>
+</html>

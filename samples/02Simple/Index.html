@@ -1,0 +1,75 @@
+<html>
+
+<head>
+	<title>ngValidationSummary - Sample 02 Set of validations</title>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../build/ngValidationSummary.css" />
+
+	<script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+	<script src="https://code.angularjs.org/1.2.16/angular-animate.js"></script>
+	<script src="../../build/ngvalidationsummary.js"></script>
+	<script src="../../build/ngvalidationSummary-tpl.js"></script>
+<!-- 	// <script src="directives/checktwofieldsmatch.js"></script> -->
+	<script src="app.js"></script>
+
+</head>
+
+<body ng-app="sampleApp" class="container">
+	<div class="page-header">
+		<h2>
+			ngValidationSummary
+			<small>Sample 02 - Validation using a custom directive</small>
+		</h2>
+	</div>
+	<div class="voffset6">
+		<div ng-controller="sampleController" validations-container>
+			<form name="userForm">
+
+				<div class="col-xs-12 col-sm-12 col-lg-12 voffset1" data-ng-show="token==undefined">
+					<div class="col-sm-6 col-md-3">
+						<label for="entryScreenEmail">Email</label>
+
+						<input id="entryScreenEmail"
+                                                class="form-control col-md-12"
+                                                type="text"
+                                                placeholder="Email"
+                                                name="entryScreenEmail"
+                                                data-ng-model="model.email"
+                                                validationbubble=""
+                                                checkvalidationemail=""
+                                                friendlyname="Email"
+                                                ng-required="true"
+                                                 />
+
+					</div>
+
+					<div class="col-sm-6 col-md-3">
+						<label for="entryScreenConfirmationEmail">
+							Confirm Email
+							<span>*</span>
+						</label>
+						<div>
+							<input id="entryScreenConfirmationEmail"
+                                            class="form-control col-md-12"
+                                            type="text"
+                                            placeholder="Confirm Email"
+                                            name="entryScreenConfirmationEmail"
+                                            ng-model="model.confirmationEmail"
+                                            validationbubble=""
+                                            checktwofieldsmatch="true"
+                                            checkvalidationemail=""
+                                            fieldtomatch="model.email"
+                                            friendlyname="Confirm Email"
+                                            fieldtomatchmodelproperty="model.email"
+                                            />
+						</div>
+					</div>
+				</div>
+
+			</form>
+			<div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8" validationsummary=""></div>
+		</div>
+	</div>
+</body>
+</html>

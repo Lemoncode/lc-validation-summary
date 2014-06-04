@@ -15,9 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [	  
-      'test/lib/jasmine-core/jasmine.js',
-	  'lib/angular/angular.js',	      
-	  'lib/angular-animate/angular-animate.js',	      
+      'test/lib/angular-mocks.js',
+	  'lib/angular/angular.js',	           
 	  'src/namespace.js',
 	  'src/services/*.js',
       'test/*.js'      

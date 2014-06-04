@@ -1,13 +1,22 @@
 var sampleApp = angular.module('sampleApp', ['ngValidationSummary'])
 
+.config(['validationContainerServiceProvider', function(validationContainerServiceProvider){
+
+    validationContainerServiceProvider.addValidation({ type: 'checktwofieldsmatch', friendlyDescription: 'The fields do not match' });
+
+}])
+
+
 
 .controller('sampleController', ['$scope', function sampleController($scope){	
 	$scope.model = {
 		email:"",
 		confirmationEmail:""
 	}
-}]);
-sampleApp.directive('checktwofieldsmatch', function () {
+}])
+
+
+.directive('checktwofieldsmatch', function () {
 
     return {
         require: ["ngModel", "^form"],
@@ -40,8 +49,5 @@ sampleApp.directive('checktwofieldsmatch', function () {
         }
     };
 });
-sampleApp.config('validationContainerService', function(validationContainerServiceProvider){
 
-	validationContainerServiceProvider.addValidation({ type: 'checktwofieldsmatch', friendlyDescription: 'The fields do not match' });
 
-});

@@ -1,56 +1,75 @@
 <html>
 
 <head>
-<title>ngValidationSummary - Sample 00 Basic summary</title>
+  <title>ngValidationSummary - Sample 00 Basic summary</title>
 
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../../build/ngValidationSummary.css" />
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../build/ngValidationSummary.css" />
 
-<script src="https://code.angularjs.org/1.2.16/angular.js"></script>
-<script src="../../build/ngvalidationsummary.js"></script>
-<script src="../../build/ngvalidationSummary-tpl.js"></script>
-<script src="app.js"></script>
+  <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+  <script src="../../build/ngvalidationsummary.js"></script>
+  <script src="../../build/ngvalidationSummary-tpl.js"></script>
+  <script src="app.js"></script>
 
 </head>
 
 <body ng-app="sampleApp" class="container">
-<div class="page-header"><h2>ngValidationSummary<small> Sample 00 - Basic summary</small></h2></div>
-<div class="voffset6">
- <div ng-controller="sampleController" validations-container="">
-    <form name="userForm">
-            <div class="form-group">
-                <label class="col-sm-1 control-label" for="userName">Name:</label>
-                <div class="col-sm-4">
-                    <input id="userName" 
-                    	    name="userName" 
-                    	    class="form-control col-md-12"
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-10">
+        <h2>
+          ngValidationSummary
+          <small>Sample 00 - Basic summary</small>
+        </h2>
+      </div>
+      <div class="col-md-2">
+        <p style="margin-top:20px;">
+          <a href="../">
+            <button class="btn btn-default">
+             <span class="glyphicon glyphicon-circle-arrow-left"></span>
+              Back to Menu
+            </button>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="voffset6">
+    <div ng-controller="sampleController" validations-container="">
+      <form name="userForm">
+        <div class="form-group">
+          <label class="col-sm-1 control-label" for="userName">Name:</label>
+          <div class="col-sm-4">
+            <input id="userName" 
+                          name="userName" 
+                          class="form-control col-md-12"
                             type="text" 
                             ng-model="name" 
                             ng-required="true"                            
                             validationbubble="" 
                             friendlyname="User name"
                              />
-                </div>
-            </div>
+          </div>
+        </div>
 
-            <div class="form-group">
-                <label class="col-sm-1 control-label" for="userSurname">Surname:</label>
-                <div class="col-sm-4">
-                    <input id="userSurname" 
+        <div class="form-group">
+          <label class="col-sm-1 control-label" for="userSurname">Surname:</label>
+          <div class="col-sm-4">
+            <input id="userSurname" 
                            name="userSurname" 
                            class="form-control col-md-12"
                            type="text" 
                            ng-model="lastname" 
                            validationbubble="" 
                            friendlyname="User surname" />
-                </div>
-            </div>
+          </div>
+        </div>
 
-    </form>
-	<div validationsummary=""></div>
- 
- </div> 
-</div>
+      </form>
+      <div validationsummary=""></div>
+
+    </div>
+  </div>
 </body>
 
 </html>

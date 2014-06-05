@@ -128,7 +128,7 @@ describe('validationContainerService test', function () {
 
 	});
 
-	describe("when a control contains a defined and an undefined validation error, the method 'extractValidations'",function(){	
+	describe("when a control contains an undefined and a defined validation error, the method 'extractValidations'",function(){	
 		it('should return an array containg the corresponding item to the defined validation',function(){
 
 			// Arrange
@@ -151,8 +151,31 @@ describe('validationContainerService test', function () {
 
 	});
 
+	describe("when a control contains a defined and an undefined validation error, the method 'extractValidations'",function(){	
+		it('should return an array containg the corresponding item to the defined validation',function(){
+
+			// Arrange
+			var $injector =angular.injector(['ng','ngValidationSummary']);
+			var validationContainerService = $injector.get('validationContainerService');
+
+			// Act
+			var ctrl = { $error:{required:true, maxlength:undefined} };
+
+			var validations = validationContainerService.extractValidations(ctrl);
+
+			//Assert
+			var expectedExtractedValidations = 
+			[
+				{validationType:'required',passValidation:false}
+			];
+			expect(validations).toEqual(expectedExtractedValidations);
+
+		});
+
+	});
+
 	describe("when validationbuble has been defined to a DOM element that doesnt contain a $error property",function(){	
-		it('should return an empty array',function(){
+		it('should return an empty array and a WARN message',function(){
 
 			// Arrange
 			var $injector =angular.injector(['ng','ngValidationSummary']);
@@ -165,7 +188,7 @@ describe('validationContainerService test', function () {
 
 			//Assert
 			var expectedExtractedValidations = [];
-			
+
 			expect(validations).toEqual(expectedExtractedValidations);
 
 		});

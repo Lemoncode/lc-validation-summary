@@ -1,20 +1,29 @@
 describe('validationContainerService test', function () {
 
-	var configProvider;
 
 	/// providerMethods
-	describe("",function(){	
-		it('', function(){
+	describe("when I configure the validationContainerService to not to have initially any supportedValidation, the method extractValidations",function(){	
+		it('should return an empty array when the control where it was defined has validations set', function(){
+			//Arrange
+			var configProvider;
+			var validationService;
+			angular.mock.module('ngValidationSummary');
 
-			var fakeApp = angular.module('fakeApp',[]);
-
-			fakeApp.config(['validationContainerServiceProvider',function (validationContainerServiceProvider){
+			module(function(validationContainerServiceProvider){
 				configProvider=validationContainerServiceProvider;
-			}]);
+			});
 
-			angular.mock.module('fakeApp');
 
-			inject(function(){});
+			inject(function ($log, validationContainerService){
+     		validationService = validationContainerService;
+			});
+
+			//Act
+			var ctrl = { $error:{required:true, pattern:true, minlength:false, maxlength:true} };
+			configProvider.removeDefaultSupportedValidations();
+			var validations = validationService.extractValidations(ctrl);
+			
+			expect(validations).toEqual([]);
 		});
 	});
 

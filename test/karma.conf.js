@@ -19,6 +19,7 @@ module.exports = function(config) {
 	  'lib/angular/angular.js',	           
 	  'src/namespace.js',
 	  'src/services/*.js',
+      'src/directives/*.js',
       'test/*.js'      
     ],
 

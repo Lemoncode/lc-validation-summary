@@ -1,32 +1,5 @@
 describe('validationContainerService test', function () {
 
-
-	/// providerMethods
-	describe("when I configure the validationContainerService to not to have initially any supportedValidation, the method extractValidations",function(){	
-		it('should return an empty array when the control where it was defined has validations set', function(){
-			//Arrange
-			var configProvider;
-			var validationService;
-			angular.mock.module('ngValidationSummary');
-
-			module(function(validationContainerServiceProvider){
-				configProvider=validationContainerServiceProvider;
-			});
-
-
-			inject(function ($log, validationContainerService){
-     		validationService = validationContainerService;
-			});
-
-			//Act
-			var ctrl = { $error:{required:true, pattern:true, minlength:false, maxlength:true} };
-			configProvider.removeDefaultSupportedValidations();
-			var validations = validationService.extractValidations(ctrl);
-			
-			expect(validations).toEqual([]);
-		});
-	});
-
 	/// extractValidations
 	describe("when a control doesnt have any validation set, the method 'extractValidations'",function(){	
 		it('should return an empty array',function(){
@@ -207,6 +180,89 @@ describe('validationContainerService test', function () {
 
 		});
 
+	});
+
+	/// providerMethods
+	describe("when configuring the validationContainerService to not to have any supportedValidation initially, the method extractValidations",function(){	
+		it('should return an empty array when the control where it was defined has validations set', function(){
+			//Arrange
+			var configProvider;
+			var validationService;
+			angular.mock.module('ngValidationSummary');
+
+			module(function(validationContainerServiceProvider){
+				configProvider=validationContainerServiceProvider;
+			});
+
+
+			inject(function ($log, validationContainerService){
+     		validationService = validationContainerService;
+			});
+
+			//Act
+			var ctrl = { $error:{required:true, pattern:true, minlength:false, maxlength:true} };
+			configProvider.removeDefaultSupportedValidations();
+			var validations = validationService.extractValidations(ctrl);
+			
+			expect(validations).toEqual([]);
+		});
+	});
+
+	describe("when adding a custom validation to the validationContainerService, the method extractValidations",function(){	
+		it('should return an array containgin the custom validation', function(){
+			//Arrange
+			var configProvider;
+			var validationService;
+			module('ngValidationSummary');
+
+			module(function(validationContainerServiceProvider){
+				configProvider=validationContainerServiceProvider;
+			});
+
+
+			inject(function ($log, validationContainerService){
+     		validationService = validationContainerService;
+			});
+
+			//Act
+			var ctrl = { $error:{checktwofieldsmatch:true} };
+			configProvider.addValidation({type: 'checktwofieldsmatch', friendlyDescription: 'The fields must match'});
+			var validations = validationService.extractValidations(ctrl);
+			var expectedExtractedValidations = 
+			[
+			{validationType:'checktwofieldsmatch',passValidation:false}
+			];
+			expect(validations).toEqual(expectedExtractedValidations);
+		});
+	});
+
+	describe("when adding a custom validation and setting this one plus a 'required' validation to an element",function(){	
+		it("should return an array containgin the custom and the 'required' validation", function(){
+			//Arrange
+			var configProvider;
+			var validationService;
+			angular.mock.module('ngValidationSummary');
+
+			module(function(validationContainerServiceProvider){
+				configProvider=validationContainerServiceProvider;
+			});
+
+
+			inject(function ($log, validationContainerService){
+        		validationService = validationContainerService;
+			});
+
+			//Act
+			var ctrl = { $error:{required:true, checktwofieldsmatch:true} };
+			configProvider.addValidation({type: 'checktwofieldsmatch', friendlyDescription: 'The fields must match'});
+			var validations = validationService.extractValidations(ctrl);
+			var expectedExtractedValidations = 
+			[
+			{validationType:'required',passValidation:false},
+			{validationType:'checktwofieldsmatch',passValidation:false}
+			];
+			expect(validations).toEqual(expectedExtractedValidations);
+		});
 	});
 	
 });

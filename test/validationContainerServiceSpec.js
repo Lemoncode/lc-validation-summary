@@ -1,7 +1,24 @@
 describe('validationContainerService test', function () {
 
-	var validationContainerService;
+	var configProvider;
 
+	/// providerMethods
+	describe("",function(){	
+		it('', function(){
+
+			var fakeApp = angular.module('fakeApp',[]);
+
+			fakeApp.config(['validationContainerServiceProvider',function (validationContainerServiceProvider){
+				configProvider=validationContainerServiceProvider;
+			}]);
+
+			angular.mock.module('fakeApp');
+
+			inject(function(){});
+		});
+	});
+
+	/// extractValidations
 	describe("when a control doesnt have any validation set, the method 'extractValidations'",function(){	
 		it('should return an empty array',function(){
 
@@ -91,10 +108,10 @@ describe('validationContainerService test', function () {
 			//Assert
 			var expectedExtractedValidations = 
 			[
-				{validationType:'required',	passValidation:false},
-				{validationType:'pattern', 	passValidation:false}, 
-				{validationType:'maxlength',passValidation:false},
-				{validationType:'minlength',passValidation:true}
+			{validationType:'required',	passValidation:false},
+			{validationType:'pattern', 	passValidation:false}, 
+			{validationType:'maxlength',passValidation:false},
+			{validationType:'minlength',passValidation:true}
 			];
 			expect(validations).toEqual(expectedExtractedValidations);
 
@@ -134,7 +151,7 @@ describe('validationContainerService test', function () {
 			//Assert
 			var expectedExtractedValidations = 
 			[
-				{validationType:'maxlength',passValidation:false}
+			{validationType:'maxlength',passValidation:false}
 			];
 			expect(validations).toEqual(expectedExtractedValidations);
 
@@ -156,7 +173,7 @@ describe('validationContainerService test', function () {
 			//Assert
 			var expectedExtractedValidations = 
 			[
-				{validationType:'required',passValidation:false}
+			{validationType:'required',passValidation:false}
 			];
 			expect(validations).toEqual(expectedExtractedValidations);
 

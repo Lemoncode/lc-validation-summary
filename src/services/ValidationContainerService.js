@@ -1,5 +1,5 @@
 ngValidationSummary.provider('validationContainerService', function () {
-    
+
     var supportedValidations = [
     {
         type: 'required',
@@ -25,7 +25,9 @@ ngValidationSummary.provider('validationContainerService', function () {
         },
 
         addValidation: function(validation) {
-            supportedValidations.push(validation);
+            if(validation.type!='undefined'&& validation.friendlyDescription!='undefined'){
+                supportedValidations.push(validation);
+            }
         },
 
         $get: ['$log',function($log) {
@@ -82,13 +84,13 @@ ngValidationSummary.provider('validationContainerService', function () {
                     return validationText;
                 },
 
-                buildValidationSummaryEntry: function(validationKey, controlFriendlyName, validation, customerrordirective, customerrormessage) {
+                buildValidationSummaryEntry: function(validationKey, controlFriendlyName, validation, customErrorDirective, customErrorMessage) {
                     var item = {};
 
                     item.key = validationKey;
 
-                    if(typeof customerrordirective != 'undefined' && customerrordirective == validation) {
-                        item.errorMessage = customerrormessage;    
+                    if(typeof customErrorDirective != 'undefined' && customErrorDirective == validation) {
+                        item.errorMessage = customErrorMessage;    
                     } else {
                         item.errorMessage = this.buildValidationFriendlyMessage(controlFriendlyName, validation);    
                     }

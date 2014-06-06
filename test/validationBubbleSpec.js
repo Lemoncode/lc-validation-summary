@@ -137,17 +137,7 @@ describe('validationBubble expected behavior tests', function () {
 							"</form>" +
 						"</div>" +
 			       "</div>";
-		
-		//'<div ng-init="person = {name: 2}">' +
-		/*   '<div validations-container="">'+
-		      '<form name="personInformation">'+
-		           '<input type="text" id="personName" name="personName" ng-model="personName"'+
-		             'validationbubble="" friendlyname="Name"/>'+
-		'</form>'+
-		'</div>';*/
-		//'</div>';
-         
-       
+			       
     	compile(angular.element(html))(scope);
 
         //run the compiled view.

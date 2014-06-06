@@ -1,6 +1,4 @@
-
-
-
+// =validationBubble Exception tests
 describe('validationBubble Exception tests', function () {
 
 	var compile;
@@ -25,23 +23,22 @@ describe('validationBubble Exception tests', function () {
     	});
     });
 
-	
-
 	it("shouldn't throw any exception when the html is well formed and no field is missing", function(){
-
+		// Arrange
 		html = 	
+		'<div validations-container="">'+
 		'<form name=personInformation>'+
 		'<input type="text" id="personName" name="personName" ng-model="fields.personName"'+
 		'validationbubble="" friendlyname="Name"/'>+
-		'</form>';
-
+		'</form>'+
+		'</div>';
+		
+		// Act & Assert
 		expect(checkException(html));
-
 	});
 
 	it("should trhow an exception when form name is missing", function(){
-
-		// Html missing form name
+		//Arrange 
 		html =
 		'<div validations-container="">'+
 		'<form>'+
@@ -51,19 +48,21 @@ describe('validationBubble Exception tests', function () {
 		'</div>';
 		var message="";
 
+		//Act
 		try{
 			checkException(html);
 		}
 		catch(err){
 			message=err;
 		}
-		expect(message).toEqual("validationbubble requires that a name is assigned to the ng-form containing the validated input");
 
+		//Assert
+		expect(message).toEqual("validationbubble requires that a name is assigned to the ng-form containing the validated input");
 	});
 
 	it("should trhow an exception when attr.name is missing", function(){
 
-		// Html missing form name
+		// Arrange
 		html =
 		'<div validations-container="">'+
 		'<form name="formName">'+
@@ -73,45 +72,27 @@ describe('validationBubble Exception tests', function () {
 		'</div>';
 		var message="";
 
+		// Act
 		try{
 			checkException(html);
 		}
 		catch(err){
 			message=err;
 		}
+
+		// Assert
 		expect(message).toEqual("validationbubble must be set on an input element that has a 'name' attribute");
-
 	});
-
 });
+// #validationBubble Exception tests
 
-
+// =validationBubble Behaviour tests
 describe('validationBubble expected behavior tests', function () {
 	var compile;
 	var scope;
 	var html;
 
 	beforeEach(function(){
-		ngValidationSummary.directive('validationsContainer', [function () {
-		    return {
-		        restrict: "A",
-		        link: function (scope, element, attr, ctrl) {
-
-		        },
-		        controller: ['$scope', '$element', function ($scope, $element) {
-		            $scope.validationMessages = [];
-
-		            this.getValidationMessages = function () {
-		                return 
-		            },
-		            this.$updateValidationResult = function (ctrl, friendlyControlName, customerrordirective, customerrormessage) {
-		                return
-		            };
-		        }]
-		    };
-		}]);
-
-		
     	// Load ngValidationSummaryApp
     	module('ngValidationSummary');
 
@@ -120,15 +101,10 @@ describe('validationBubble expected behavior tests', function () {
     		 scope = $rootScope.$new();
     		 compile = $compile;
     	});
-
-
-
     });
 
-	it("shouldn't throw any exception when the html is well formed and no field is missing", function(){
-
-
-		// ng-required="true"
+	it("should generate a validation message when the validation of the input is set to 'ng-required' and the model of the field is set from dirty to blank", function(){
+		// Arrange
 		var html = "<div ng-init='person = {name: 2}'>" +
 						"<div validations-container=''>" +
 							"<form name='personInformation'>"+
@@ -137,19 +113,40 @@ describe('validationBubble expected behavior tests', function () {
 							"</form>" +
 						"</div>" +
 			       "</div>";
-			       
+		
+		// Act			       
     	compile(angular.element(html))(scope);
-
-        //run the compiled view.
-        compile(scope);
-
 		scope.$digest();
     	scope.person.name = "test";
     	scope.$digest();
 		scope.person.name = "";
 		scope.$digest();
 
-		// Assert here 
-		scope.validationMessages.length > 0;
+		// Assert 
+		expect(1).toEqual(scope.validationMessages.length);
+	});
+
+	it("should generate two validation messages when the validation of the input is set to 'ng-required' and 'minlength' and the model of the field is set from dirty to blank", function(){
+		// Arrange
+		var html = "<div ng-init='person = {name: Peter}'>" +
+						"<div validations-container=''>" +
+							"<form name='personInformation'>"+
+							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
+							"ng-minlength='2' validationbubble='' friendlyname='Name'/>"+
+							"</form>" +
+						"</div>" +
+			       "</div>";
+		
+		// Act			       
+    	compile(angular.element(html))(scope);
+		scope.$digest();
+    	scope.person.name = "test";
+    	scope.$digest();
+		scope.person.name = "t";
+		scope.$digest();
+
+		// Assert 
+		expect(1).toEqual(scope.validationMessages.length);
 	});
 });
+// #validationBubble Behaviour tests

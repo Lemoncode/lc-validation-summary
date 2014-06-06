@@ -1,22 +1,22 @@
 ngValidationSummary.provider('validationContainerService', function () {
-    
+
     var supportedValidations = [
-        {
-            type: 'required',
-            friendlyDescription: "this field is mandatory"
-        },
-        {
-            type: 'pattern',
-            friendlyDescription: "this field doesn't match the pattern set"
-        },
-        {
-            type: 'maxlength',
-            friendlyDescription: "this field exceeds the maximum length"
-        },
-        {
-            type: 'minlength',
-            friendlyDescription: "this field doesn't reach the minimum length"
-        }
+    {
+        type: 'required',
+        friendlyDescription: "this field is mandatory"
+    },
+    {
+        type: 'pattern',
+        friendlyDescription: "this field doesn't match the pattern set"
+    },
+    {
+        type: 'maxlength',
+        friendlyDescription: "this field exceeds the maximum length"
+    },
+    {
+        type: 'minlength',
+        friendlyDescription: "this field doesn't reach the minimum length"
+    }
     ];
 
     return {
@@ -25,10 +25,12 @@ ngValidationSummary.provider('validationContainerService', function () {
         },
 
         addValidation: function(validation) {
-            supportedValidations.push(validation);
+            if(validation.type!='undefined'&& validation.friendlyDescription!='undefined'){
+                supportedValidations.push(validation);
+            }
         },
 
-        $get: [function() {
+        $get: ['$log',function($log) {
 
             function buildValidationItem(validationType, passValidation) {
                 var validationItem = {};
@@ -44,9 +46,13 @@ ngValidationSummary.provider('validationContainerService', function () {
                     var validations = [];
                     var validationItem = null;
 
+                    if(typeof ctrl.$error == 'undefined'){
+                        $log.warn('The validationBubble has been set to an element with no $error property');
+                        return validations;
+                    };
+
                     angular.forEach(supportedValidations, function(supportedValidation, key) {
                         var validationType = supportedValidation.type;
-
                         if (typeof ctrl.$error[validationType] !== 'undefined') {
                             validationItem = buildValidationItem(validationType,
                                 (ctrl.$error[validationType] == false));
@@ -78,13 +84,13 @@ ngValidationSummary.provider('validationContainerService', function () {
                     return validationText;
                 },
 
-                buildValidationSummaryEntry: function(validationKey, controlFriendlyName, validation, customerrordirective, customerrormessage) {
+                buildValidationSummaryEntry: function(validationKey, controlFriendlyName, validation, customErrorDirective, customErrorMessage) {
                     var item = {};
 
                     item.key = validationKey;
 
-                    if(typeof customerrordirective != 'undefined' && customerrordirective == validation) {
-                        item.errorMessage = customerrormessage;    
+                    if(typeof customErrorDirective != 'undefined' && customErrorDirective == validation) {
+                        item.errorMessage = customErrorMessage;    
                     } else {
                         item.errorMessage = this.buildValidationFriendlyMessage(controlFriendlyName, validation);    
                     }

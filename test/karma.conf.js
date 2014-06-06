@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: './../',
+    basePath: '../',
 
 
     // frameworks to use
@@ -14,12 +14,12 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [	  
-      'test/lib/jasmine-core/jasmine.js',
-	  'lib/angular/angular.js',	      
-	  'lib/angular-animate/angular-animate.js',	      
+    files: [	
+	  'lib/angular/angular.js',
 	  'src/namespace.js',
 	  'src/services/*.js',
+      'src/directives/*.js',
+      'test/lib/angular-mocks.js',
       'test/*.js'      
     ],
 

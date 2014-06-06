@@ -215,9 +215,9 @@ describe('validationContainerService test', function () {
 			
 			module('ngValidationSummary');
 
-			module(['validationContainerServiceProvider',(validationContainerServiceProvider){
+			module(function(validationContainerServiceProvider){
 				configProvider=validationContainerServiceProvider;
-			}]);
+			});
 
 
 			inject(function ($log, validationContainerService){

@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>ngValidationSummary - Sample 03 Custom Validation Message</title>
+  <title>ngValidationSummary - Sample 01 Set of validations</title>
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../../build/ngValidationSummary.css" />
@@ -14,7 +14,25 @@
 </head>
 
 <body ng-app="sampleApp" class="container">
-<div class="page-header"><h2>ngValidationSummary<small> Sample 03 - Using custom Validation Messages</small></h2></div>
+<div class="page-header">
+    <div class="row">
+      <div class="col-md-10">
+        <h2>
+          ngValidationSummary<small> Sample 01 - Set of validations</small>
+        </h2>
+      </div>
+      <div class="col-md-2">
+        <p style="margin-top:20px;">
+          <a href="../">
+            <button class="btn btn-default">
+             <span class="glyphicon glyphicon-circle-arrow-left"></span>
+              Back to Menu
+            </button>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
 <div class="voffset6">
   <div ng-controller="sampleController" validations-container>
     <form name="userForm">
@@ -22,20 +40,18 @@
       <div class="form-group">
         
         <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
-          <label for="alias">Alias: <small>String pattern with custom message (wwwwdd)</small></label>
-          <input id="alias" 
-                   name="alias" 
+          <label for="nickName">NickName: <small>Maximum length = 8</small></label>
+          <input id="nickName" 
+                   name="nickName" 
                    class="form-control col-md-12"
                    type="text" 
-                   ng-model="model.alias"
+                   ng-model="model.nickName"
                    validationbubble=""
-                   ng-pattern="/(^\D{4})+(\d{2})$/"
-                   customerrordirective="pattern"
-                   customerrormessage="Alias: An alias must be composed by 4 characters and 2 digits."
-                   friendlyname="Alias" />
+                   ng-maxlength="8"
+                   friendlyname="Nickname" />
         </div>
         <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
-          <label for="password">Password: <small>Minimum length with custom message (SSSSSS)</small></label>
+          <label for="password">Password: <small>Minimum length = 6</small></label>
           <input id="password" 
                    name="password" 
                    class="form-control col-md-12"
@@ -43,37 +59,32 @@
                    ng-model="model.password"
                    validationbubble=""
                    ng-minlength="6"
-                   customerrordirective="minlength"
-                   customerrormessage="Password: Must be at least 6 characters long."
                    friendlyname="Password" />
         </div>
         <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
-          <label for="email">Email: <small>String pattern with custom message (*@gmail.com)</small></label>
+          <label for="email">Email: <small>Required field</small></label>
           <input   type="email"
                    id="email" 
                    name="email" 
                    class="form-control col-md-12"
                    ng-model="model.email"
                    validationbubble=""
-                   ng-pattern="/(^\S{1,})+(@gmail\.com)/"
-                   customerrordirective="pattern"
-                   customerrormessage="Email: Must ve a valid Gmail account."
+                   ng-required="true"
                    friendlyname="Email" />
         </div>
         <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
-          <label for="phoneNumber">Phone number: <small>String pattern with custom message (dddddddddd)</small></label>
+          <label for="phoneNumber">Phone number: <small>Pattern = (dddddddddd)</small></label>
           <input   id="phoneNumber" 
                    name="phoneNumber" 
                    class="form-control col-md-12"
                    type="text" 
                    ng-model="model.phoneNumber"
                    ng-pattern="/^\d{10}$/"
-                   customerrordirective="pattern"
-                   customerrormessage="Phone number: Must be formed by 10 digits."
                    validationbubble=""
                    friendlyname="Phone number" />
         </div>
       </div>
+    
     </form>
     <div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8" validationsummary=""></div>
   </div>

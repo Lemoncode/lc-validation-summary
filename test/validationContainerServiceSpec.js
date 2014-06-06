@@ -19,7 +19,6 @@ describe('validationContainerService test', function () {
 
 			//Assert
 			expect(validations).toEqual([]);
-
 		});
 
 	it("when a control just contains a 'required' validation, the method 'extractValidations' should return an an array containing the corresponding item",function(){	
@@ -32,7 +31,6 @@ describe('validationContainerService test', function () {
 			//Assert
 			var expectedExtractedValidations = [{validationType:'required',passValidation:false}];
 			expect(validations).toEqual(expectedExtractedValidations);
-
 		});
 
 	it("when a control contains a 'required' and 'pattern' validations, the method 'extractValidations' should return an an array containing the corresponding items",function(){	
@@ -45,7 +43,6 @@ describe('validationContainerService test', function () {
 			//Assert
 			var expectedExtractedValidations = [{validationType:'required',passValidation:false},{validationType:'pattern', passValidation:false}];
 			expect(validations).toEqual(expectedExtractedValidations);
-
 		});
 	
 	it("when a control contains a 'required', 'pattern' and 'minlength' validations, the method 'extractValidations' should return an an array containing the corresponding items",function(){
@@ -58,7 +55,6 @@ describe('validationContainerService test', function () {
 			//Assert
 			var expectedExtractedValidations = [{validationType:'required',passValidation:false},{validationType:'pattern', passValidation:false}, {validationType:'minlength', passValidation:true}];
 			expect(validations).toEqual(expectedExtractedValidations);
-
 		});
 
 	it("when a control contains a 'required', 'pattern', 'minlength' and 'maxlength' validations, the method 'extractValidations' should return an an array containing the corresponding items",function(){
@@ -77,7 +73,6 @@ describe('validationContainerService test', function () {
 			{validationType:'minlength',passValidation:true}
 			];
 			expect(validations).toEqual(expectedExtractedValidations);
-
 		});
 
 
@@ -205,7 +200,7 @@ describe("validationContainerService Provider test", function(){
 			//Assert
 			expect(validations).toEqual([]);
 		});
-	
+
 	//buildValidationSummaryEntry
 	
 	it("when adding a custom validation, the metod 'buildValidationSummaryEntry' should return a correctly built item", function(){

@@ -1,4 +1,7 @@
-describe('validationBubble test', function () {
+
+
+
+describe('validationBubble Exception tests', function () {
 
 	var compile;
 	var scope;
@@ -80,70 +83,83 @@ describe('validationBubble test', function () {
 
 	});
 
-	it("parameters passed to updateValidationResult are correct when modifying form.formName.model.personName.$valid in a correct html code", function(){
-
-		angular.module('ngValidationSummary').directive('validationsContainer', function(){
-
-			{
-				restrict: "A",
-				link: function (scope, element, attr, ctrl) {
-
-				},
-				controller: ['$scope', '$element', function ($scope, $element) {
-					var values;
-					$scope.validationMessages = [];
-					this.$updateValidationResult = function (ctrl, friendlyControlName, customerrordirective, customerrormessage) {
-						values.ctrl=ctrl;
-						values.friendlyControlName=friendlyControlName;
-						values.customerrordirective=customerrordirective;
-						values.customerrormessage=customerrormessage;
-					};
-
-					this.$getValues(){
-						return values;
-					}
-				}];
-			};
+});
 
 
-		});
+describe('validationBubble expected behavior tests', function () {
+	var compile;
+	var scope;
+	var html;
 
+	beforeEach(function(){
+		ngValidationSummary.directive('validationsContainer', [function () {
+		    return {
+		        restrict: "A",
+		        link: function (scope, element, attr, ctrl) {
+
+		        },
+		        controller: ['$scope', '$element', function ($scope, $element) {
+		            $scope.validationMessages = [];
+
+		            this.getValidationMessages = function () {
+		                return 
+		            },
+		            this.$updateValidationResult = function (ctrl, friendlyControlName, customerrordirective, customerrormessage) {
+		                return
+		            };
+		        }]
+		    };
+		}]);
+
+		
+    	// Load ngValidationSummaryApp
+    	module('ngValidationSummary');
+
+    	// Load $compale and $rootScope modules
+    	inject(function($compile, $rootScope){
+    		 scope = $rootScope.$new();
+    		 compile = $compile;
+    	});
+
+
+
+    });
+
+	it("shouldn't throw any exception when the html is well formed and no field is missing", function(){
+
+
+		// ng-required="true"
+		var html = "<div ng-init='person = {name: 2}'>" +
+						"<div validations-container=''>" +
+							"<form name='personInformation'>"+
+							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
+							"ng-required='true' validationbubble='' friendlyname='Name'/>"+
+							"</form>" +
+						"</div>" +
+			       "</div>";
+		
+		//'<div ng-init="person = {name: 2}">' +
+		/*   '<div validations-container="">'+
+		      '<form name="personInformation">'+
+		           '<input type="text" id="personName" name="personName" ng-model="personName"'+
+		             'validationbubble="" friendlyname="Name"/>'+
+		'</form>'+
+		'</div>';*/
+		//'</div>';
+         
+       
+    	compile(angular.element(html))(scope);
+
+        //run the compiled view.
+        compile(scope);
+
+		scope.$digest();
+    	scope.person.name = "test";
+    	scope.$digest();
+		scope.person.name = "";
+		scope.$digest();
+
+		// Assert here 
+		scope.validationMessages.length > 0;
 	});
-
-
-	// beforeEach(function(){
-	// 	module("app");
-	// 	inject(function($compile, $rootScope){
-	// 		scope = $rootScope;
-	// 		element=angular.element("<div>{{2+2}}</div>")
-	// 		$compile(element)($rootScope)
-
-	// 	})
-
-	// });
-
-	// it("should equal 4", function(){
-	// 	scope.$digest();
-	// 	expect(element.html()).toEqual("4");
-
-	// })
-
-	// describe("when a control doesnt have any validation set, the method 'extractValidations'",function(){	
-	// 	it('should return an empty array',function(){
-
-	// 		// Arrange
-	// 		var $injector =angular.injector(['ng','ngValidationSummary']);
-	// 		var validationContainerService = $injector.get('validationContainerService');
-
-	// 		// Act
-	// 		var ctrl = { $error:{} };
-	// 		var validations = validationContainerService.extractValidations(ctrl);
-
-	// 		//Assert
-	// 		expect(validations).toEqual([]);
-
-	// 	});
-
-	// });
-
 });

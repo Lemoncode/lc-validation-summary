@@ -82,7 +82,31 @@ describe('validationBubble test', function () {
 
 	it("parameters passed to updateValidationResult are correct when modifying form.formName.model.personName.$valid in a correct html code", function(){
 
-		angular.module('ngValidationSummary').directive('validationbubble')
+		angular.module('ngValidationSummary').directive('validationsContainer', function(){
+
+			{
+				restrict: "A",
+				link: function (scope, element, attr, ctrl) {
+
+				},
+				controller: ['$scope', '$element', function ($scope, $element) {
+					var values;
+					$scope.validationMessages = [];
+					this.$updateValidationResult = function (ctrl, friendlyControlName, customerrordirective, customerrormessage) {
+						values.ctrl=ctrl;
+						values.friendlyControlName=friendlyControlName;
+						values.customerrordirective=customerrordirective;
+						values.customerrormessage=customerrormessage;
+					};
+
+					this.$getValues(){
+						return values;
+					}
+				}];
+			};
+
+
+		});
 
 	});
 

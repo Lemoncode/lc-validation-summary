@@ -1,5 +1,11 @@
 describe('validationSummary test', function () {
 
-	it('')
+	it('', function(){
+		// Arrange
+
+		// Act
+
+		// Assert
+	});
 
 });

@@ -6,9 +6,7 @@
 
         link: function (scope, element, attr, ctrl) {
             var valContainer = ctrl;
-            var currentSection = parseInt(attr.currentsection);
-
-            scope.currentsection = currentSection;
+            
             scope.validationsSummary = valContainer.getValidationMessages();
 
         }

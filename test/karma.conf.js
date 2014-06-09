@@ -19,7 +19,7 @@ module.exports = function(config) {
       'src/namespace.js',
       'src/services/*.js',
       'src/directives/*.js',
-      'test/lib/angular-mocks.js',
+      'test/lib/angular-mocks/angular-mocks.js',
       'test/*.js'      
     ],
 

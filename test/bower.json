@@ -1,0 +1,20 @@
+{
+  "name": "ngValidationSummary - test",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Lemoncode/ngValidationSummary",
+  "authors": [
+    "Braulio Diez Botella <braulio.diez@gmail.com>"
+  ],
+  "description": "Angular directive tests for providing a validation summary to angular based forms",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib"
+  ],
+  "dependencies": {
+    "angular-mocks": "~1.2.17"
+  }
+}

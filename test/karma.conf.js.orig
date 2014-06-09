@@ -14,19 +14,16 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-<<<<<<< HEAD
-    files: [	  
+    files: [	
       'lib/angular/angular.js',
       'src/namespace.js',
       'src/services/*.js',
-=======
-    files: [	
-	  'lib/angular/angular.js',
-	  'src/namespace.js',
-	  'src/services/*.js',
->>>>>>> Issue23_Unit_Test_validationContainerServiceProvider
       'src/directives/*.js',
+<<<<<<< HEAD
       'test/lib/angular-mocks.js',
+=======
+      'test/lib/angular-mocks/angular-mocks.js',
+>>>>>>> master
       'test/*.js'      
     ],
 

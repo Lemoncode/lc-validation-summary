@@ -95,30 +95,80 @@ describe('validationBubble expected behavior tests', function () {
 	beforeEach(function(){
     	// Load ngValidationSummaryApp
     	module('ngValidationSummary');
+    	ngValidationSummary.directive('validationsContainer', ['arrayUtilities', 'validationContainerService', function (arrayUtilities, validationContainerService) {
+    		return {
+    			priority: 100000,
+        		terminal: true,
+    			restrict: "A",
+    			link: function (scope, element, attr, ctrl) {
+
+    			},
+    			controller: ['$scope', '$element', function ($scope, $element) {
+    				$scope.validationMessages = [];
+
+    				this.getValidationMessages = function () {
+    					return $scope.validationMessages;
+    				},
+    				this.$updateValidationResult = function (ctrl, friendlyControlName, customerrordirective, customerrormessage) {
+    					var extractedValues;
+    					extractedValues.ctrl=ctrl;
+    					extractedValues.friendlyControlName= friendlyControlName;
+    					extractedValues.customerrordirective=customerrordirective;
+    					extractedValues.customerrormessage=customerrormessage;
+
+    					var validationKeys = validationContainerService.extractValidations(ctrl);                
+
+    					angular.forEach(validationKeys, function (value, key) {
+    						var currentValidationKey = validationContainerService.buildValidationKey(ctrl.$name, value.validationType);
+    						var indexItemValidationMessage = arrayUtilities.firstIndexMatchingCriteriaOrMinusOne($scope.validationMessages, 'key', [currentValidationKey]);
+    						var entryExistsInValidationMessage = (indexItemValidationMessage != -1);
+
+    						if (value.passValidation == true) {
+                        		// Search in the master list of errors and remove the entry if exists
+                       			if (entryExistsInValidationMessage) {
+                        		arrayUtilities.removeElementFromArray($scope.validationMessages, indexItemValidationMessage);
+                        		}
+                    		} 
+                    		else {
+                        		// Search in the master list of errors and add the entry if it doesn't exists
+                        		if (!entryExistsInValidationMessage) {
+                            		// Add element, push
+                            		var item = validationContainerService.buildValidationSummaryEntry(currentValidationKey, friendlyControlName, value.validationType, customerrordirective, customerrormessage);
+                            		$scope.validationMessages.push(item);
+                        		}
+                    		}
+                		});
+					};
+					this.$getExctactedValues=function(){
+
+					};
+				}]
+			};
+		}]);
 
     	// Load $compale and $rootScope modules
     	inject(function($compile, $rootScope){
-    		 scope = $rootScope.$new();
-    		 compile = $compile;
+    		scope = $rootScope.$new();
+    		compile = $compile;
     	});
     });
 
-	it("should generate a validation message when the validation of the input is set to 'ng-required' and the model of the field is set from dirty to blank", function(){
+it("should generate a validation message when the validation of the input is set to 'ng-required' and the model of the field is set from dirty to blank", function(){
 		// Arrange
 		var html = "<div ng-init='person = {name: 2}'>" +
-						"<div validations-container=''>" +
-							"<form name='personInformation'>"+
-							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-required='true' validationbubble='' friendlyname='Name'/>"+
-							"</form>" +
-						"</div>" +
-			       "</div>";
+		"<div validations-container=''>" +
+		"<form name='personInformation'>"+
+		"<input type='text' id='personName' name='personName' ng-model='person.name'"+
+		"ng-required='true' validationbubble='' friendlyname='Name'/>"+
+		"</form>" +
+		"</div>" +
+		"</div>";
 		
 		// Act			       
-    	compile(angular.element(html))(scope);
+		compile(angular.element(html))(scope);
 		scope.$digest();
-    	scope.person.name = "test";
-    	scope.$digest();
+		scope.person.name = "test";
+		scope.$digest();
 		scope.person.name = "";
 		scope.$digest();
 
@@ -126,22 +176,22 @@ describe('validationBubble expected behavior tests', function () {
 		expect(1).toEqual(scope.validationMessages.length);
 	});
 
-	it("should generate two validation messages when the validation of the input is set to 'ng-required' and 'minlength' and the model of the field is set from dirty to blank", function(){
+it("should generate two validation messages when the validation of the input is set to 'ng-required' and 'minlength' and the model of the field is set from dirty to blank", function(){
 		// Arrange
 		var html = "<div ng-init='person = {name: Peter}'>" +
-						"<div validations-container=''>" +
-							"<form name='personInformation'>"+
-							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-minlength='2' validationbubble='' friendlyname='Name'/>"+
-							"</form>" +
-						"</div>" +
-			       "</div>";
+		"<div validations-container=''>" +
+		"<form name='personInformation'>"+
+		"<input type='text' id='personName' name='personName' ng-model='person.name'"+
+		"ng-minlength='2' validationbubble='' friendlyname='Name'/>"+
+		"</form>" +
+		"</div>" +
+		"</div>";
 		
 		// Act			       
-    	compile(angular.element(html))(scope);
+		compile(angular.element(html))(scope);
 		scope.$digest();
-    	scope.person.name = "test";
-    	scope.$digest();
+		scope.person.name = "test";
+		scope.$digest();
 		scope.person.name = "t";
 		scope.$digest();
 

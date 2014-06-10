@@ -1,13 +1,13 @@
-﻿<div class='col-sm-12 col-md-12 validation-summary-box'
+﻿<div class='validation-summary-box'
         ng-show='validationsSummary.length>0'
     >
-    <div class="col-xs-12 summaryTitle">
+    <div class="summaryTitle">
         <h4>Please review the following fields:</h4>
     </div>
     <div class='validation-summary-box'>
-        <div class="col-xs-12 boxStyle">
+        <div class="boxStyle">
             <ul>              
-                <li ng-repeat='item in validationsSummary'>{{item.errorMessage}}</li>                                
+                <li ng-repeat='item in validationsSummary'>{{item.errorMessage}}</li>    
             </ul>
         </div>
     </div>

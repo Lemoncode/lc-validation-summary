@@ -18,17 +18,19 @@ describe('validationSummary test', function () {
 		// Arrange
 		var html = 
 		"<div validations-container=''>" +
+		"<div ng-init='personName=Peter'>" +
 		"<form name='personInformation'>"+
 		"<input type='text' id='personName' name='personName' ng-model='person.name'"+
 		"ng-required='true' validationbubble='' friendlyname='Name'/>"+
-		"</form>" +
+		"</form>"+
 		"</div>" +
-		"</div>"+
+		"</div>" +
+		"</div>" +
 		"<div id='validationBox' validationsummary=''></div>";
 		var element = angular.element(html);
 		// Act
 		var compiled = compile(element)(scope);
-		scope.$digest();
+		scope.$digest(); 
 
 		// Assert
 		expect(element[1].find('#validationBox').length).toBe(1);

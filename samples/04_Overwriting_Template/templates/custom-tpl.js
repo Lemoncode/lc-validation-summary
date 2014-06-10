@@ -2,10 +2,10 @@ angular.module('ngValidationSummary').run(['$templateCache', function($templateC
   'use strict';
 
   $templateCache.put('./src/directives/validationsummary.html',
-    "<div class='jumbotron validation-summary-box'\n" +
+    "<div class='validation-summary-box'\n" +
     "        ng-show='validationsSummary.length>0'\n" +
     "    >\n" +
-    "    <div class=\"summaryTitle\">\n" +
+    "    <div class=\"jumbotron summaryTitle voffset4\">\n" +
     "        <h4>Please review the following fields:</h4>\n" +
     "    </div>\n" +
     "    <div class='validation-summary-box'>\n" +

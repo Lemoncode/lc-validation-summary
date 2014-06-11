@@ -3,9 +3,15 @@
         <h4>Please review the following fields:</h4>
     </div>
     <div class='validation-summary-box'>
-        <div class="boxStyle">
+<<<<<<< HEAD
+        <div class="col-xs-12 boxStyle">
             <ul id="errorListContainer">              
                 <li ng-repeat='item in validationsSummary'>{{item.errorMessage}}</li>          
+=======
+        <div class="boxStyle">
+            <ul>              
+                <li ng-repeat='item in validationsSummary'>{{item.errorMessage}}</li>    
+>>>>>>> master
             </ul>
         </div>
     </div>

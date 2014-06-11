@@ -8,7 +8,7 @@ angular.module('ngValidationSummary').run(['$templateCache', function($templateC
     "    <div class=\"jumbotron summaryTitle voffset4\">\n" +
     "        <h4>Please review the following fields:</h4>\n" +
     "    </div>\n" +
-    "    <div class='validation-summary-box'>\n" +
+    "    <div class=''>\n" +
     "        <div class=\"boxStyle\">\n" +
     "            <ul>              \n" +
     "                <li ng-repeat='item in validationsSummary'>{{item.errorMessage}}</li>                                \n" +

@@ -10,11 +10,6 @@
 }
 
 .validation-summary-title {
-    color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 20px;
-    background-color: #E8705B;
 }
 
 .validation-summary-box ul {
@@ -28,6 +23,7 @@
 
 .validation-summary-title h4{
     font-size: 1.2em;
+    margin-left:10px;
 }
 
 .summaryTitle h4 {
@@ -39,6 +35,7 @@
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     color: white;
+    padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-top: 10px;

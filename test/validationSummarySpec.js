@@ -14,7 +14,7 @@ describe('validationSummary Spec', function () {
 
 	});
 	
-	it('Should find an element inside the errorListContainer when using a validation in a form and forcing it fail', function(){
+	it('Should show up find an element inside the errorListContainer when using a validation in a form and forcing it fail', function(){
 		
 		// Arrange
 		var html = "<div ng-init='person = {name: 2}'>" +
@@ -44,7 +44,7 @@ describe('validationSummary Spec', function () {
 		expect($(element[0]).find('.validation-summary-box.ng-hide').length).toBe(0);
 	});
 
-	it('Should find two elements inside the errorListContainer when using two validations in a form and forcing them fail', function(){
+	it('Should show up and find two elements inside the errorListContainer when using two validations in a form and forcing them fail', function(){
 		
 		// Arrange
 		var html = "<div ng-init='person = {name: 2, surName:3}'>" +

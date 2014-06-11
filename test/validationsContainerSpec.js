@@ -4,14 +4,11 @@ describe('validationSummary Spec', function () {
 	var compile;
 
 	beforeEach(function(){
-
 		module('ngValidationSummary');
-
 		inject(function($compile, $rootScope){
 			scope = $rootScope.$new();
 			compile = $compile;
 		});
-
 	});
 
 	it('Should add no validations when using validations in a form and forcing them to pass ',function(){
@@ -98,6 +95,37 @@ describe('validationSummary Spec', function () {
 
 		// Assert
 		expect(scope.validationMessages.length).toBe(2);
+	});
+
+
+	it('Should add one validationmessage when using two validations in a form and forcing just one to fail ',function(){
+		// Arrange
+		var html = "<div ng-init='person = {name: 2}'>" +
+						"<div validations-container=''>" +
+							"<form name='personInformation'>"+
+							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
+							"ng-required='true' validationbubble='' friendlyname='Name'/>"+
+							"<input type='text' id='personName' name='personName' ng-model='person.surName'"+
+							"ng-minlength='4' validationbubble='' friendlyname='Name'/>"+
+							"</form>" +
+							"<div validationsummary=''></div>" +
+						"</div>" +
+			       "</div>";
+
+		var element = angular.element(html); // If jQuery is available, angular.element is an alias for the jQuery function. If jQuery is not available, angular.element delegates to Angular's built-in subset of jQuery called jQuery lite
+		
+		// Act
+		var compiled = compile(element)(scope);
+		scope.$digest();
+    	scope.person.name = "test";
+    	scope.person.surName = "test";
+    	scope.$digest();
+		scope.person.name = "test";
+		scope.person.surName = "p";
+		scope.$digest(); 
+
+		// Assert
+		expect(scope.validationMessages.length).toBe(1);
 	});
 
 });

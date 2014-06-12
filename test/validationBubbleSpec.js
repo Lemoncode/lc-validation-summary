@@ -26,10 +26,10 @@ describe('validationBubble Exception tests', function () {
 	it("shouldn't throw any exception when the html is well formed and no field is missing", function(){
 		// Arrange
 		html = 	
-		'<div validations-container="">'+
+		'<div ng-validations-container="">'+
 		'<form name=personInformation>'+
 		'<input type="text" id="personName" name="personName" ng-model="fields.personName"'+
-		'validationbubble="" friendlyname="Name"/'>+
+		'ng-validation-bubble="" validation-friendly-name="Name"/'>+
 		'</form>'+
 		'</div>';
 		
@@ -40,10 +40,10 @@ describe('validationBubble Exception tests', function () {
 	it("should trhow an exception when form name is missing", function(){
 		//Arrange 
 		html =
-		'<div validations-container="">'+
+		'<div ng-validations-container="">'+
 		'<form>'+
 		'<input type="text" id="personName" name="personName" ng-model="fields.personName"'+
-		'validationbubble="" friendlyname="Name"/>'+
+		'ng-validation-bubble="" validation-friendly-name="Name"/>'+
 		'</form>'+
 		'</div>';
 		var message="";
@@ -64,10 +64,10 @@ describe('validationBubble Exception tests', function () {
 
 		// Arrange
 		html =
-		'<div validations-container="">'+
+		'<div ng-validations-container="">'+
 		'<form name="formName">'+
 		'<input type="text" id="personName" ng-model="fields.personName"'+
-		'validationbubble="" friendlyname="Name"/>'+
+		'ng-validation-bubble="" validation-friendly-name="Name"/>'+
 		'</form>'+
 		'</div>';
 		var message="";
@@ -106,10 +106,10 @@ describe('validationBubble expected behavior tests', function () {
 	it("should generate a validation message when the validation of the input is set to 'ng-required' and the model of the field is set from dirty to blank", function(){
 		// Arrange
 		var html = "<div ng-init='person = {name: 2}'>" +
-						"<div validations-container=''>" +
+						"<div ng-validations-container=''>" +
 							"<form name='personInformation'>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-required='true' validationbubble='' friendlyname='Name'/>"+
+							"ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"</form>" +
 						"</div>" +
 			       "</div>";
@@ -129,10 +129,10 @@ describe('validationBubble expected behavior tests', function () {
 	it("should generate two validation messages when the validation of the input is set to 'ng-required' and 'minlength' and the model of the field is set from dirty to blank", function(){
 		// Arrange
 		var html = "<div ng-init='person = {name: Peter}'>" +
-						"<div validations-container=''>" +
+						"<div ng-validations-container=''>" +
 							"<form name='personInformation'>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-minlength='2' validationbubble='' friendlyname='Name'/>"+
+							"ng-minlength='2' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"</form>" +
 						"</div>" +
 			       "</div>";

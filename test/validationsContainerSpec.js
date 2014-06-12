@@ -14,12 +14,12 @@ describe('validationSummary Spec', function () {
 	it('Should add no validations when using validations in a form and forcing them to pass ',function(){
 		// Arrange
 		var html = "<div ng-init='person = {name: 2}'>" +
-						"<div validations-container=''>" +
+						"<div ng-validations-container=''>" +
 							"<form name='personInformation'>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-required='true' validationbubble='' friendlyname='Name'/>"+
+							"ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-							"ng-minlength='4' validationbubble='' friendlyname='Name'/>"+
+							"ng-minlength='4' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"</form>" +
 							"<div validationsummary=''></div>" +
 						"</div>" +
@@ -44,10 +44,10 @@ describe('validationSummary Spec', function () {
 	it('Should add one validationmessage when using a validation in a form and forcing it fail ',function(){
 		// Arrange
 		var html = "<div ng-init='person = {name: 2}'>" +
-						"<div validations-container=''>" +
+						"<div ng-validations-container=''>" +
 							"<form name='personInformation'>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-required='true' validationbubble='' friendlyname='Name'/>"+
+							"ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"</form>" +
 							"<div validationsummary=''></div>" +
 						"</div>" +
@@ -70,12 +70,12 @@ describe('validationSummary Spec', function () {
 	it('Should add two validationmessages when using two validations in a form and forcing them fail ',function(){
 		// Arrange
 		var html = "<div ng-init='person = {name: 2}'>" +
-						"<div validations-container=''>" +
+						"<div ng-validations-container=''>" +
 							"<form name='personInformation'>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-required='true' validationbubble='' friendlyname='Name'/>"+
+							"ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-							"ng-minlength='4' validationbubble='' friendlyname='Name'/>"+
+							"ng-minlength='4' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"</form>" +
 							"<div validationsummary=''></div>" +
 						"</div>" +
@@ -101,12 +101,12 @@ describe('validationSummary Spec', function () {
 	it('Should add one validationmessage when using two validations in a form and forcing just one to fail ',function(){
 		// Arrange
 		var html = "<div ng-init='person = {name: 2}'>" +
-						"<div validations-container=''>" +
+						"<div ng-validations-container=''>" +
 							"<form name='personInformation'>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-required='true' validationbubble='' friendlyname='Name'/>"+
+							"ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-							"ng-minlength='4' validationbubble='' friendlyname='Name'/>"+
+							"ng-minlength='4' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"</form>" +
 							"<div validationsummary=''></div>" +
 						"</div>" +

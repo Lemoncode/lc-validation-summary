@@ -14,16 +14,16 @@ describe('validationSummary Spec', function () {
 
 	});
 	
-	it('Should show up find an element inside the errorListContainer when using a validation in a form and forcing it fail', function(){
+	it('Should show up and find an element inside the errorListContainer when using a validation in a form and forcing it fail', function(){
 		
 		// Arrange
 		var html = "<div ng-init='person = {name: 2}'>" +
-						"<div validations-container=''>" +
+						"<div ng-validations-container=''>" +
 							"<form name='personInformation'>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-required='true' validationbubble='' friendlyname='Name'/>"+
+							"ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"</form>" +
-							"<div validationsummary=''></div>" +
+							"<div ng-validation-summary=''></div>" +
 						"</div>" +
 			       "</div>";
 
@@ -48,14 +48,14 @@ describe('validationSummary Spec', function () {
 		
 		// Arrange
 		var html = "<div ng-init='person = {name: 2, surName:3}'>" +
-						"<div validations-container=''>" +
+						"<div ng-validations-container=''>" +
 							"<form name='personInformation'>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-required='true' validationbubble='' friendlyname='Name'/>"+
+							"ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-							"ng-minlength='4' validationbubble='' friendlyname='Name'/>"+
+							"ng-minlength='4' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"</form>" +
-							"<div validationsummary=''></div>" +
+							"<div ng-validation-summary=''></div>" +
 						"</div>" +
 			       "</div>";
 
@@ -82,14 +82,14 @@ describe('validationSummary Spec', function () {
 		
 		// Arrange
 		var html = "<div ng-init='person = {name: 2, surName:3}'>" +
-						"<div validations-container=''>" +
+						"<div ng-validations-container=''>" +
 							"<form name='personInformation'>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-required='true' validationbubble='' friendlyname='Name'/>"+
+							"ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-							"ng-minlength='4' validationbubble='' friendlyname='Name'/>"+
+							"ng-minlength='4' ng-validation-bubble='' validation-friendly-name='Name'/>"+
 							"</form>" +
-							"<div validationsummary=''></div>" +
+							"<div ng-validation-summary=''></div>" +
 						"</div>" +
 			       "</div>";
 

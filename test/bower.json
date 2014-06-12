@@ -7,7 +7,7 @@
   ],
   "description": "Angular directive tests for providing a validation summary to angular based forms",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",

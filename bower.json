@@ -1,13 +1,13 @@
 {
   "name": "ngValidationSummary",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/Lemoncode/ngValidationSummary",
   "authors": [
     "Braulio Diez Botella <braulio.diez@gmail.com>"
   ],
   "description": "Angular directive for providing a validation summary to angular based forms",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",

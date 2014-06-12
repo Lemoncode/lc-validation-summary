@@ -1,4 +1,4 @@
-﻿ngValidationSummary.directive('validationbubble', function () {
+﻿ngValidationSummary.directive('ngValidationBubble', function () {
 
     var checkDirectivePrerequisites = function (attr, form, validationsContainer) {
         if (!attr.name) {
@@ -29,8 +29,8 @@
             var form = ctrls[1];        
             var validationsContainer = ctrls[2];
             var friendlyname = attr.friendlyname;
-            var customerrordirective =  attr.customerrordirective;
-            var customerrormessage = attr.customerrormessage;
+            var customErrorDirective =  attr.customErrorDirective;
+            var customErrorMessage = attr.customErrorMessage;
 
             checkDirectivePrerequisites(attr, form, validationsContainer);
             
@@ -38,7 +38,7 @@
 
             scope.$watch(propertyToWatch, function (isValid, lastValue) {
                 if (typeof isValid !== "undefined") {
-                    validationsContainer.$updateValidationResult(model, friendlyname, customerrordirective, customerrormessage);
+                    validationsContainer.$updateValidationResult(model, friendlyname, customErrorDirective, customErrorMessage);
                 }
             });
         }

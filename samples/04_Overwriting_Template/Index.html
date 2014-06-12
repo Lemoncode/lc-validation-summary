@@ -39,7 +39,7 @@
 
   <!--=Form-->
   <div class="voffset6">
-    <div ng-controller="sampleController" validations-container="">
+    <div ng-controller="sampleController" ng-validations-container="">
       <form name="userForm">
         <div class="form-group">
           <label class="control-label" for="userName">Name:</label>
@@ -50,7 +50,7 @@
                             type="text" 
                             ng-model="name" 
                             ng-required="true"                            
-                            validationbubble="" 
+                            ng-validation-bubble="" 
                             friendlyname="User name"
                              />
           </div>
@@ -64,7 +64,7 @@
                            class="form-control col-md-12"
                            type="text" 
                            ng-model="lastname" 
-                           validationbubble="" 
+                           ng-validation-bubble="" 
                            friendlyname="User surname" />
           </div>
         </div>
@@ -72,7 +72,7 @@
       </form>
       <!-- #Form -->
       
-        <div validationsummary=""></div>
+        <div ng-validation-summary=""></div>
       
     </div>
   </div>

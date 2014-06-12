@@ -34,7 +34,7 @@
     </div>
   </div>
 <div class="voffset6">
-  <div ng-controller="sampleController" validations-container>
+  <div ng-controller="sampleController" ng-validations-container>
     <form name="userForm">
     
       <div class="form-group">
@@ -46,7 +46,7 @@
                    class="form-control col-md-12"
                    type="text" 
                    ng-model="model.nickName"
-                   validationbubble=""
+                   ng-validation-bubble=""
                    ng-maxlength="8"
                    friendlyname="Nickname" />
         </div>
@@ -57,7 +57,7 @@
                    class="form-control col-md-12"
                    type="text" 
                    ng-model="model.password"
-                   validationbubble=""
+                   ng-validation-bubble=""
                    ng-minlength="6"
                    friendlyname="Password" />
         </div>
@@ -68,7 +68,7 @@
                    name="email" 
                    class="form-control col-md-12"
                    ng-model="model.email"
-                   validationbubble=""
+                   ng-validation-bubble=""
                    ng-required="true"
                    friendlyname="Email" />
         </div>
@@ -80,13 +80,13 @@
                    type="text" 
                    ng-model="model.phoneNumber"
                    ng-pattern="/^\d{10}$/"
-                   validationbubble=""
+                   ng-validation-bubble=""
                    friendlyname="Phone number" />
         </div>
       </div>
     
     </form>
-    <div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8" validationsummary=""></div>
+    <div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8" ng-validation-summary=""></div>
   </div>
 </div>
 </body>

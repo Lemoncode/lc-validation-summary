@@ -1,4 +1,4 @@
-﻿ngValidationSummary.directive('validationsummary', [function () {
+﻿ngValidationSummary.directive('ngValidationSummary', [function () {
     return {
         restrict: "A",
         require: "^validationsContainer",

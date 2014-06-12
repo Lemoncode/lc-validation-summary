@@ -48,22 +48,22 @@
                    ng-model="model.alias"
                    ng-validation-bubble=""
                    ng-pattern="/(^\D{4})+(\d{2})$/"
-                   customerrordirective="pattern"
-                   customerrormessage="Alias: An alias must be composed by 4 characters and 2 digits."
-                   friendlyname="Alias" />
+                   validation-custom-error-directive="pattern"
+                   validation-custom-error-message="Alias: An alias must be composed by 4 characters and 2 digits."
+                   validation-friendly-name="Alias" />
         </div>
         <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
           <label for="password">Password: <small>Minimum length with custom message (SSSSSS)</small></label>
-          <input id="password" 
+          <input   id="password" 
                    name="password" 
                    class="form-control col-md-12"
                    type="text" 
                    ng-model="model.password"
                    ng-validation-bubble=""
                    ng-minlength="6"
-                   customerrordirective="minlength"
-                   customerrormessage="Password: Must be at least 6 characters long."
-                   friendlyname="Password" />
+                   validation-custom-error-directive="minlength"
+                   validation-custom-error-message="Password: Must be at least 6 characters long."
+                   validation-friendly-name="Password" />
         </div>
         <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
           <label for="email">Email: <small>String pattern with custom message (*@gmail.com)</small></label>
@@ -74,9 +74,9 @@
                    ng-model="model.email"
                    ng-validation-bubble=""
                    ng-pattern="/(^\S{1,})+(@gmail\.com)/"
-                   customerrordirective="pattern"
-                   customerrormessage="Email: Must ve a valid Gmail account."
-                   friendlyname="Email" />
+                   validation-custom-error-directive="pattern"
+                   validation-custom-error-message="Email: Must ve a valid Gmail account."
+                   validation-friendly-name="Email" />
         </div>
         <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
           <label for="phoneNumber">Phone number: <small>String pattern with custom message (dddddddddd)</small></label>
@@ -86,10 +86,10 @@
                    type="text" 
                    ng-model="model.phoneNumber"
                    ng-pattern="/^\d{10}$/"
-                   customerrordirective="pattern"
-                   customerrormessage="Phone number: Must be formed by 10 digits."
+                   validation-custom-error-directive="pattern"
+                   validation-custom-error-message="Phone number: Must be formed by 10 digits."
                    ng-validation-bubble=""
-                   friendlyname="Phone number" />
+                   validation-friendly-name="Phone number" />
         </div>
       </div>
     </form>

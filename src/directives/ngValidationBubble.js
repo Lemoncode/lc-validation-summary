@@ -5,40 +5,35 @@
             throw "validationbubble must be set on an input element that has a 'name' attribute";
         }
 
-        if (!attr.friendlyname) {
-            throw "validationbubble must define a 'friendlyname' attribute for the control (this friendly name will be displayed in the validationSummary)";
+        if (!attr.validationFriendlyName) {
+            throw "validationbubble must define a 'validationFriendlyName' attribute for the control (this friendly name will be displayed in the validationSummary)";
         }
 
-
-        if (!form || !form.$name) {
+        if (!form.$name) {
             throw "validationbubble requires that a name is assigned to the ng-form containing the validated input";
-        }
-
-        if (!validationsContainer) {
-            throw "validationsContainer directive not found";
         }
 
     };
 
     return {
-        require: ['ngModel', '^form', "^validationsContainer"],
+        require: ['ngModel', '^form', "^ngValidationsContainer"],
         restrict: "A",
 
         link: function (scope, element, attr, ctrls) {
             var model = ctrls[0];
             var form = ctrls[1];        
-            var validationsContainer = ctrls[2];
-            var friendlyname = attr.friendlyname;
-            var customErrorDirective =  attr.customErrorDirective;
-            var customErrorMessage = attr.customErrorMessage;
+            var ngValidationsContainer = ctrls[2];
+            var validationFriendlyName = attr.validationFriendlyName;
+            var validationCustomErrorDirective =  attr.validationCustomErrorDirective;
+            var validationCustomErrorMessage = attr.validationCustomErrorMessage;
 
-            checkDirectivePrerequisites(attr, form, validationsContainer);
+            checkDirectivePrerequisites(attr, form, ngValidationsContainer);
             
             var propertyToWatch = form.$name + "." + model.$name + ".$valid";
 
             scope.$watch(propertyToWatch, function (isValid, lastValue) {
                 if (typeof isValid !== "undefined") {
-                    validationsContainer.$updateValidationResult(model, friendlyname, customErrorDirective, customErrorMessage);
+                    ngValidationsContainer.$updateValidationResult(model, validationFriendlyName, validationCustomErrorDirective, validationCustomErrorMessage);
                 }
             });
         }

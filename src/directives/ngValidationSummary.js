@@ -1,8 +1,8 @@
 ﻿ngValidationSummary.directive('ngValidationSummary', [function () {
     return {
         restrict: "A",
-        require: "^validationsContainer",
-        templateUrl: './src/directives/validationsummary.html',
+        require: "^ngValidationsContainer",
+        templateUrl: './src/directives/ngValidationSummary.html',
 
         link: function (scope, element, attr, ctrl) {
             var valContainer = ctrl;

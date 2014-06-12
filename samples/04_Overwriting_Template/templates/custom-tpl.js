@@ -1,7 +1,7 @@
 angular.module('ngValidationSummary').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('./src/directives/validationsummary.html',
+  $templateCache.put('./src/directives/ngValidationSummary.html',
     "<div class='validation-summary-box'\n" +
     "        ng-show='validationsSummary.length>0'\n" +
     "    >\n" +

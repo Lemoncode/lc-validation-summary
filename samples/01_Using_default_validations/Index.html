@@ -48,7 +48,7 @@
                    ng-model="model.nickName"
                    ng-validation-bubble=""
                    ng-maxlength="8"
-                   friendlyname="Nickname" />
+                   validation-friendly-name="Nickname" />
         </div>
         <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
           <label for="password">Password: <small>Minimum length = 6</small></label>
@@ -59,7 +59,7 @@
                    ng-model="model.password"
                    ng-validation-bubble=""
                    ng-minlength="6"
-                   friendlyname="Password" />
+                   validation-friendly-name="Password" />
         </div>
         <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
           <label for="email">Email: <small>Required field</small></label>
@@ -70,7 +70,7 @@
                    ng-model="model.email"
                    ng-validation-bubble=""
                    ng-required="true"
-                   friendlyname="Email" />
+                   validation-friendly-name="Email" />
         </div>
         <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 voffset3">
           <label for="phoneNumber">Phone number: <small>Pattern = (dddddddddd)</small></label>
@@ -81,7 +81,7 @@
                    ng-model="model.phoneNumber"
                    ng-pattern="/^\d{10}$/"
                    ng-validation-bubble=""
-                   friendlyname="Phone number" />
+                   validation-friendly-name="Phone number" />
         </div>
       </div>
     

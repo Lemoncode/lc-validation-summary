@@ -6,9 +6,7 @@
 
         link: function (scope, element, attr, ctrl) {
             var valContainer = ctrl;
-            
             scope.validationsSummary = valContainer.getValidationMessages();
-
         }
     };
 }]);

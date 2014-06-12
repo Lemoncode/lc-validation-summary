@@ -42,20 +42,20 @@ ngValidationSummary.provider('validationContainerService', function () {
             }
 
             return {
-                extractValidations: function(ctrl) {
+                extractValidations: function(elementModel) {
                     var validations = [];
                     var validationItem = null;
 
-                    if(typeof ctrl.$error == 'undefined'){
+                    if(typeof elementModel.$error == 'undefined'){
                         $log.warn('The validationBubble has been set to an element with no $error property');
                         return validations;
                     };
 
                     angular.forEach(supportedValidations, function(supportedValidation, key) {
                         var validationType = supportedValidation.type;
-                        if (typeof ctrl.$error[validationType] !== 'undefined') {
+                        if (typeof elementModel.$error[validationType] !== 'undefined') {
                             validationItem = buildValidationItem(validationType,
-                                (ctrl.$error[validationType] == false));
+                                (elementModel.$error[validationType] == false));
 
                             validations.push(validationItem);
                         }

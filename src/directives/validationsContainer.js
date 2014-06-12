@@ -10,11 +10,11 @@
             this.getValidationMessages = function () {
                 return $scope.validationMessages;
             },
-            this.$updateValidationResult = function (ctrl, friendlyControlName, customerrordirective, customerrormessage) {
-                var validationKeys = validationContainerService.extractValidations(ctrl);                
+            this.$updateValidationResult = function (elementModel, friendlyControlName, customerrordirective, customerrormessage) {
+                var validationKeys = validationContainerService.extractValidations(elementModel);                
 
                 angular.forEach(validationKeys, function (value, key) {
-                    var currentValidationKey = validationContainerService.buildValidationKey(ctrl.$name, value.validationType);
+                    var currentValidationKey = validationContainerService.buildValidationKey(elementModel.$name, value.validationType);
                     var indexItemValidationMessage = arrayUtilities.firstIndexMatchingCriteriaOrMinusOne($scope.validationMessages, 'key', [currentValidationKey]);
                     var entryExistsInValidationMessage = (indexItemValidationMessage != -1);
 

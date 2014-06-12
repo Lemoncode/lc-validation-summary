@@ -2,9 +2,9 @@ var sampleApp = angular.module('sampleApp', ['ngValidationSummary'])
 
 .controller('sampleController', ['$scope', function sampleController($scope){	
 	$scope.model = {
-		nickName:" ",
+		nickName:"",
 		password:"",
-		email:" ",
-		phoneNumber:" "
+		email:"",
+		phoneNumber:""
 	}
 }]);

@@ -29,7 +29,13 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 .no_padding{
-  padding:0px;
+ 
+  border-style:none;
+}
+pre.prettyprint {
+border: none !important;
+padding:0px !important;
+margin:10px;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,

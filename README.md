@@ -4,5 +4,7 @@ ngValidationSummary
 
 A customizable AngularJS directive providing a container with all the required fields in a web form section.
 
-Take a look at the samples included with the source code to see it in action.
+Click on the following link to see the Getting Started tutorial and samples:
+
+http://lemoncode.github.io/ngValidationSummary/
 

@@ -172,6 +172,7 @@ pre, code {
 
 pre {
   width: 100%;
+  margin: 0px;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,.1);
   overflow: auto;
@@ -180,7 +181,8 @@ pre {
 code {
   padding: 3px;
   margin: 0 3px;
-  box-shadow: 0 0 10px rgba(0,0,0,.1);
+  /*box-shadow: 0 0 10px rgba(0,0,0,.1);*/
+  color: #C04853;
 }
 
 pre code {

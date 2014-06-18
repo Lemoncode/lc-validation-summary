@@ -5,9 +5,9 @@
   <meta charset='utf-8' />
   <meta http-equiv="X-UA-Compatible" content="chrome=1" />
   <meta name="description" content="ngValidationSummary : Angular directive for providing a validation summary to angular based forms." />
-
-  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+  
 
   <title>Ngvalidationsummary</title>
 </head>
@@ -47,8 +47,8 @@
         <li>Add references to <a>ngValidationSummary</a>'s js and css files</li>
         <li>Where you declare your app module, add ngValidationSummary:</li>
         
-        <pre>angular.module('myApp',[ngValidationSummary]);</pre>
-        <li>Wrap your html form with the directive <code>ng-validations-container</code>.</li>
+        <pre class="prettyprint">angular.module('myApp',[ngValidationSummary]);</pre>
+        <li>Wrap your html form with the directive <code>ng-validations-container</code>:</li>
           <pre class="prettyprint">
 &ltdiv ng-validations-container&gt
   &ltform name="userForm"&gt
@@ -57,9 +57,8 @@
            type="text"
            ng-model="model.name"/&gt
   &lt/form&gt
-&lt/div&gt
-          </pre>
-          <li>Now each input in the form you want to validate must contain a <code>ng-validation-bubble</code> wich will notify the non-passing validations to the <code>ng-validations-container</code>. an AngularJS or a custom validation (in this example we'll use ng-required) and a <code>validation-friendly-name</code> parameter.</li>
+&lt/div&gt</pre>
+<li>Now, each input in the form you want to validate must contain a <code>ng-validation-bubble</code> wich will notify the non-passing validations to the <code>ng-validations-container</code>. It also must have a <a> supported validation </a>for the input (in this example we use <code>ng-required</code>) and also define a <code>validation-friendly-name</code></li>
           <pre class="prettyprint">
 &ltdiv ng-validations-container&gt
   &ltform name="userForm"&gt
@@ -72,10 +71,24 @@
            validation-friendly-name="User Name" 
   &lt/form&gt
 &lt/div&gt</pre>
-        <li>In your html file, within the controller where you plan to use ng-validation-summary, add a div element to contain the UI-listed validations:</li>
+<li>In your html file, within the controller where you want to use, add a div element with the<code>ng-validation-summary</code> directive. This div will show the validation results to the user interface :</li>
        
-        <pre>&ltdiv ng-validation-summary=""&gt&lt/div&gt</pre>
+        <pre class="prettyprint">&ltdiv ng-validation-summary=""&gt&lt/div&gt</pre>
        </ol>
+       
+       <p>
+          And we're done! Now the validation summary will notify the user when the input it's empty.This is the final code and result:
+          <iframe style="border: 1px solid #999;width: 100%; height: 300px"
+        src="http://embed.plnkr.co/rYX9gh?t=readme" frameborder="0"
+        allowfullscreen="allowfullscreen">
+  Loading plunk...
+</iframe>
+        </p>
+        <p>
+        In this simple tutorial, the validation message, "this field is mandatory", is the associated message to the angular ng-required directive.
+        Check out more advanced samples to see how to set your <strong> custom messages </strong> and <strong> custom directives
+        </strong>.
+       </p>
        <ul>
        <li><strong>Note:</strong> This Angular component has <strong>no</strong> dependecies with jQuery or Bootstrap.
        </ul>

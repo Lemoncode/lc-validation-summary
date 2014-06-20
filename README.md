@@ -15,7 +15,9 @@ Visit the [ngValidationSummary](http://lemoncode.github.io/ngValidationSummary/)
 ###Contributors
 * [Braulio Diez](https://github.com/brauliodiezbrauliodiez)
 * [Rosana Ruiz](https://github.com/brauliodiez) 
-* [Jaime Salas] (https://github.com/JaimeSalas)
+* [Jaime Salas](https://github.com/JaimeSalas)
+* [Dani Sanchez](https://github.com/Nasdan)
+
 
 Powered by [Lemoncode] (http://lemoncode.net)
 

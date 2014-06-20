@@ -19,7 +19,7 @@ Visit the [ngValidationSummary](http://lemoncode.github.io/ngValidationSummary/)
 * [Dani Sanchez](https://github.com/Nasdan)
 
 
-Powered by [Lemoncode] (http://lemoncode.net)
+Powered by [Lemoncode] (https://github.com/Lemoncode)
 
 
 

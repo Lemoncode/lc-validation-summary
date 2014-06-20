@@ -31,22 +31,26 @@
     </header>
   </div>
 
-  <!-- MAIN CONTENT -->
+  
   <div id="main_content_wrap" class="outer">
-    <section id="getting_started" class="inner">
-      <h1>
-        Getting Started
-      </h1>
 
+  <!--=GETTIN STARTED -->
+    <section id="getting_started" class="inner"><br><br>
+    <img src="images/screenshot1.PNG"/>
+      <h1>Getting Started</h1>
+      You can download the source code folder or install this component through bower.
+      <h3>Download</h3>
+      <a href="https://github.com/Lemoncode/ngValidationSummary/zipball/master">Download</a>, unzip the source code folder and add the build files to your project.
+      
+      <h3>Install with Bower</h3>
+      Install and use ngValidationSummary using <a href="http://bower.io/">Bower</a>
+      <pre class="prettyprintt">$ bower install ngValidationSummary</pre>
+      <h3>Using ngValidationSummary</h3>
       <p>
        <ol>
-        <li>Add references to
-        <a href="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">
-        AngularJS
-        </a></li>
+        <li>Add references to <a href="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">AngularJS</a></li>
         <li>Add references to <a>ngValidationSummary</a>'s js and css files</li>
         <li>Where you declare your app module, add ngValidationSummary:</li>
-        
         <pre class="prettyprint">angular.module('myApp',[ngValidationSummary]);</pre>
         <li>Wrap your html form with the directive <code>ng-validations-container</code>:</li>
           <pre class="prettyprint no_padding">
@@ -58,8 +62,8 @@
            ng-model="model.name"/&gt
   &lt/form&gt
 &lt/div&gt</pre>
-<li>Now, each input in the form you want to validate must contain a <code>ng-validation-bubble</code> wich will notify the non-passing validations to the <code>ng-validations-container</code>. It also must have a <a> supported validation </a>for the input (in this example we use <code>ng-required</code>) and also define a <code>validation-friendly-name</code></li>
-          <pre class="prettyprint">
+<li>Now, each input in the form you want to validate must contain a <code>ng-validation-bubble</code> wich will notify the non-passing validations to the <code>ng-validations-container</code>. Then add one of the <a href="#supportedValidations">default supported validations </a> or <a href="#customValidations">add your custom validation</a> (in this example we use <code>ng-required</code>) and define a <code>validation-friendly-name</code> to show in the view</li>
+        <pre class="prettyprint">
 &ltdiv ng-validations-container&gt
   &ltform name="userForm"&gt
     &ltlabel for="userName"&gtName:&lt/label&gt
@@ -71,8 +75,7 @@
            validation-friendly-name="User Name" 
   &lt/form&gt
 &lt/div&gt</pre>
-<li>In your html file, within the controller where you want to use, add a div element with the<code>ng-validation-summary</code> directive. This div will show the validation results to the user interface :</li>
-       
+        <li>In your html file, within the controller where you want to use, add a div element with the<code>ng-validation-summary</code> directive. This div will show the validation results to the user interface :</li>
         <pre class="prettyprint">&ltdiv ng-validation-summary=""&gt&lt/div&gt</pre>
        </ol>
        
@@ -85,6 +88,7 @@
                   Loading plunk...
           </iframe>
         </p>
+
         <p>
         In this simple tutorial, the validation message, "this field is mandatory", is the associated message to the angular ng-required directive.
         Check out more advanced samples to see how to set your <strong> custom messages </strong> and <strong> custom directives
@@ -93,11 +97,62 @@
        
        <strong>Note:</strong> This Angular component has <strong>no</strong> dependecies with jQuery or Bootstrap.
        
-     
     </section>
 
     <section class="inner">
-      <h1>Code Samples </h1>
+      <h3 id="supportedValidations"> Default supported Validations</h3>
+          The default supported validations contained in <code>ngValidationProvider</code> and their default custom error messages are:
+          <br><br>
+
+          <table>
+          <tr><th>Supported validation</th>  <th>Default error message.</th></tr>
+          <tr><td><strong>ng-required</strong></td>           <td><code>"This field is mandatory"</code></td></tr>
+          <tr><td><strong>ng-pattern</strong></td>            <td><code>"This field doesn't match the pattern set"</code></td></tr>
+          <tr><td><strong>ng-minlenth</strong></td>           <td><code>"This field exceeds the maximum length"</code></td></tr>
+          <tr><td><strong>ng-maxlength</strong></td>          <td><code>"This field doesn't reach the minimum length"</code></td></tr>
+          </table>
+    </section>
+
+    <section class="inner">
+      <h3 id="customValidations"> Adding custom Validations</h3>
+       You can add your custom validation directives making use of the <strong>validationContainerServiceProvider</strong> in your <a href="https://docs.angularjs.org/api/ng/type/angular.Module/#config">app.config(configFn)</a> function: 
+
+       <ol>
+         <li>Register your custom Validation in your app</li>
+         <pre class="prettyprint">myApp.directive('myCustomValidation',fcn(...){...});</pre>
+         <li>Use the method <strong>addValidation()</strong> from the <code>validationContainerServiceProvider</code> to add a validation item with the
+           following fields: <pre class="prettyprint">{ type: 'myCustomDirective', friendlyDescription: 'myErrorMessage' }</pre>
+           <li>In the html code, add your directive to an input field</li>
+           <pre class="prettyprint">
+&ltinput name="myInput"
+       myCustomValidation=""
+       ng-validation-bubble=""
+       validation-friendly-name="myInputFriendlyName"/&gt</pre>
+       </ol>
+       Sample code in: <strong><a href="#sample02">Sample 02 - Using a custom validation</a></strong>
+    </section>
+
+    <section class="inner">
+      <h3 id="customErrorMessages"> Adding custom error messages</h3>
+       You can also add your custom messages by making use of the <code>validation-custom-error-message</code> parameter:
+       <ol>
+         <li>Add the parameter <code>validation-custom-error-directive</code> and set it to the name of the validation you want the input field to have. Wether it's a custom or a default one.</li>
+         <li>Add the parameter <code>validation-custom-error-message</code> and set it to the message you want to show when the validation is not passing.</li>
+
+           <pre class="prettyprint">
+&ltinput name="myInput"
+       validation-custom-error-directive="myCustomValidation"
+       validation-custom-error-message="My custom error mesage"
+       validation-friendly-name="myInputFriendlyName"
+       ng-validation-bubble=""/&gt
+           </pre>
+       </ol>
+       Sample code in: <strong><a href="#sample03">Sample 03 - Adding custom error messages</a></strong>
+    </section>
+<!-- #GETTIN STARTED -->
+<!-- =SAMPLE 00 -->
+    <section class="inner">
+      <h1 id="sample00">Code Samples </h1>
       <h3>Sample 00 - Validating two input fields</h3>
       <p>
         This sample moves one small step forward and adds another input field to the form.
@@ -108,10 +163,30 @@
                   allowfullscreen="allowfullscreen">
                   Loading plunk...
       </iframe>
-    </section>
+      
+      <p>
+        The form is contained inside a div declaring the <code>ng-validations-container</code> 
+        directive.
+        Both inputs in the form make use of the <code>ng-validation-bubble</code> directive, which 
+        is in charge of notifying the validation results to the <code>ng-validations-container</code>.
+        These inputs use the angular <code>ng-required</code> directive, which is one of the angular <a href="#supportedValidations"> 
+        validations supported </a> by <code>ngValidationSummary</code> and must set the parameter 
+        <code>validation-friendly-name</code> to a friendly name describing the input content to 
+        the user.
 
+        The validation message, "this field is mandatory", is the
+        associated message to the angular ng-required directive.
+
+        Check out more advanced samples to see how to set your <strong>custom messages and 
+        directives</strong>.
+
+        Finnaly, the <code>ng-validation-summary</code> directive will add the list of non-passing 
+        validations to the UI.
+      </p>
+    </section>
+<!-- =SAMPLE01 -->
      <section class="inner">
-      <h3>Sample 01 - Using different angular validations</h3>
+      <h3 id="sample01">Sample 01 - Using different angular validations</h3>
       <p>
         You can use a set of different angular built in validations and apply them to each input in a form.
       </p>
@@ -122,9 +197,9 @@
                   Loading plunk...
       </iframe>
     </section>
-
+<!-- =SAMPLE02 -->
     <section class="inner">
-      <h3>Sample 02 - Using a custom validation</h3>
+      <h3 id="sample02">Sample 02 - Using a custom validation</h3>
       <p>
         Here is where the fun stuff starts! Use your own angular directives to validate input fields your own way.
         In this sample we're using a home-made directive named <code>check-two-fields-match</code> that validates
@@ -137,9 +212,9 @@
               Loading plunk...
       </iframe>
     </section>
-
+<!-- =SAMPLE03 -->
     <section class="inner">
-      <h3>Sample 03 - Adding custom error messages </h3>
+      <h3 id="sample03">Sample 03 - Adding custom error messages </h3>
       <p>
         Add custom error messages to your directive by using the parameter <code>validation-custom-error-message</code>
       </p>
@@ -150,7 +225,7 @@
               Loading plunk...
       </iframe>
     </section>
-
+<!-- =SAMPLE04 -->
     <section class="inner">
       <h3>Sample 04 - Using a custom template </h3>
       <p>
@@ -163,7 +238,6 @@
               Loading plunk...
       </iframe>
     </section>
-
 
   </div>
 

@@ -1,96 +1,96 @@
 /*<=validation summary styles>*/
 
 .validation-summary-box {
-    color: white;
-    padding: 0px;
-    margin-top: 60px;
-    padding-bottom: 15px;
-    margin-bottom: 10px;
-    width: 100%;
-    background-color:#EDEDED;
+  color: white;
+  padding: 0px;
+  margin-top: 60px;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  width: 100%;
+  background-color:#EDEDED;
 }
 
 .validation-summary-title {
-    margin-left:40px;
-    color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 20px;
-    background-color: #E8705B;
+  margin-left:40px;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  background-color: #E8705B;
 }
 
 .validation-summary-box ul {
-    margin-left:40px;
-    list-style: decimal;
+  margin-left:40px;
+  list-style: decimal;
 }
 
 .validation-summary-box li {
-    color: #1D4343;
-    font-weight: bold;
+  color: #1D4343;
+  font-weight: bold;
 }
 
 .validation-summary-title h4{
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 .summaryTitle h4 {
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 .summaryTitle {
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    background-color: #3AA9AB;
-    font-family: Verdana;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  background-color: #3AA9AB;
+  font-family: Verdana;
 }
 /*<#validation summary styles>*/
 
 /*<=voffset>*/
 
 .voffset {
-    margin-top: 2px;
+  margin-top: 2px;
 }
 
 .voffset1 {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .voffset2 {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .voffset3 {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .voffset4 {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .voffset5 {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .voffset6 {
-    margin-top: 60px;
+  margin-top: 60px;
 }
 
 .voffset7 {
-    margin-top: 80px;
+  margin-top: 80px;
 }
 
 .voffset8 {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
 .voffset9 {
-    margin-top: 150px;
+  margin-top: 150px;
 }
 
 /*<#voffset>*/

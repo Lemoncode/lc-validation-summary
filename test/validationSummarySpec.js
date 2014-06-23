@@ -1,112 +1,112 @@
 describe('validationSummary Spec', function () {
 
-	var scope;
-	var compile;
+  var scope;
+  var compile;
 
-	beforeEach(function(){
+  beforeEach(function(){
 
-		module('ngValidationSummary');
+    module('ngValidationSummary');
 
-		inject(function($compile, $rootScope){
-			scope = $rootScope.$new();
-			compile = $compile;
-		});
+    inject(function($compile, $rootScope){
+      scope = $rootScope.$new();
+      compile = $compile;
+    });
 
-	});
-	
-	it('Should show up and find an element inside the errorListContainer when using a validation in a form and forcing it fail', function(){
-		
-		// Arrange
-		var html = "<div ng-init='person = {name: 2}'>" +
-						"<div ng-validations-container=''>" +
-							"<form name='personInformation'>"+
-							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
-							"</form>" +
-							"<div ng-validation-summary=''></div>" +
-						"</div>" +
-			       "</div>";
+  });
 
-		var element = angular.element(html); // If jQuery is available, angular.element is an alias for the jQuery function. If jQuery is not available, angular.element delegates to Angular's built-in subset of jQuery called jQuery lite
-		
-		// Act
-		var compiled = compile(element)(scope);
-		scope.$digest();
-    	scope.person.name = "test";
-    	scope.$digest();
-		scope.person.name = "";
-		scope.$digest(); 
+  it('Should show up and find an element inside the errorListContainer when using a validation in a form and forcing it fail', function(){
 
-		// Assert
-		var length= $(element[0]).find('#errorListContainer').children().length;
+    // Arrange
+    var html = "<div ng-init='person = {name: 2}'>" +
+            "<div ng-validations-container=''>" +
+              "<form name='personInformation'>"+
+              "<input type='text' id='personName' name='personName' ng-model='person.name'"+
+              "ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
+              "</form>" +
+              "<div ng-validation-summary=''></div>" +
+            "</div>" +
+             "</div>";
 
-		expect(length).toBe(1);
-		expect($(element[0]).find('.validation-summary-box.ng-hide').length).toBe(0);
-	});
+    var element = angular.element(html); // If jQuery is available, angular.element is an alias for the jQuery function. If jQuery is not available, angular.element delegates to Angular's built-in subset of jQuery called jQuery lite
 
-	it('Should show up and find two elements inside the errorListContainer when using two validations in a form and forcing them fail', function(){
-		
-		// Arrange
-		var html = "<div ng-init='person = {name: 2, surName:3}'>" +
-						"<div ng-validations-container=''>" +
-							"<form name='personInformation'>"+
-							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
-							"<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-							"ng-minlength='4' ng-validation-bubble='' validation-friendly-name='Name'/>"+
-							"</form>" +
-							"<div ng-validation-summary=''></div>" +
-						"</div>" +
-			       "</div>";
+    // Act
+    var compiled = compile(element)(scope);
+    scope.$digest();
+    scope.person.name = "test";
+    scope.$digest();
+    scope.person.name = "";
+    scope.$digest();
 
-		var element = angular.element(html); // If jQuery is available, angular.element is an alias for the jQuery function. If jQuery is not available, angular.element delegates to Angular's built-in subset of jQuery called jQuery lite
-		
-		// Act
-		var compiled = compile(element)(scope);
-		scope.$digest();
-    	scope.person.name = "test";
-    	scope.person.surName = "test";
-    	scope.$digest();
-		scope.person.name = "";
-		scope.person.surName = "p";
-		scope.$digest(); 
+    // Assert
+    var length= $(element[0]).find('#errorListContainer').children().length;
 
-		// Assert
-		var length= $(element[0]).find('#errorListContainer').children().length;
+    expect(length).toBe(1);
+    expect($(element[0]).find('.validation-summary-box.ng-hide').length).toBe(0);
+  });
 
-		expect(length).toBe(2);
-		expect($(element[0]).find('.validation-summary-box.ng-hide').length).toBe(0);
-	});
+  it('Should show up and find two elements inside the errorListContainer when using two validations in a form and forcing them fail', function(){
 
-	it('should find no elements and be hidden when no error is present', function(){
-		
-		// Arrange
-		var html = "<div ng-init='person = {name: 2, surName:3}'>" +
-						"<div ng-validations-container=''>" +
-							"<form name='personInformation'>"+
-							"<input type='text' id='personName' name='personName' ng-model='person.name'"+
-							"ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
-							"<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-							"ng-minlength='4' ng-validation-bubble='' validation-friendly-name='Name'/>"+
-							"</form>" +
-							"<div ng-validation-summary=''></div>" +
-						"</div>" +
-			       "</div>";
+    // Arrange
+    var html = "<div ng-init='person = {name: 2, surName:3}'>" +
+            "<div ng-validations-container=''>" +
+              "<form name='personInformation'>"+
+              "<input type='text' id='personName' name='personName' ng-model='person.name'"+
+              "ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
+              "<input type='text' id='personName' name='personName' ng-model='person.surName'"+
+              "ng-minlength='4' ng-validation-bubble='' validation-friendly-name='Name'/>"+
+              "</form>" +
+              "<div ng-validation-summary=''></div>" +
+            "</div>" +
+             "</div>";
 
-		var element = angular.element(html); // If jQuery is available, angular.element is an alias for the jQuery function. If jQuery is not available, angular.element delegates to Angular's built-in subset of jQuery called jQuery lite
-		
-		// Act
-		var compiled = compile(element)(scope);
-		scope.$digest();
-    	scope.person.name = "test";
-    	scope.person.surName = "test";
-    	scope.$digest();
+    var element = angular.element(html); // If jQuery is available, angular.element is an alias for the jQuery function. If jQuery is not available, angular.element delegates to Angular's built-in subset of jQuery called jQuery lite
 
-		// Assert
-		var length= $(element[0]).find('#errorListContainer').children().length;
+    // Act
+    var compiled = compile(element)(scope);
+    scope.$digest();
+    scope.person.name = "test";
+    scope.person.surName = "test";
+    scope.$digest();
+    scope.person.name = "";
+    scope.person.surName = "p";
+    scope.$digest();
 
-		expect(length).toBe(0);
-		expect($(element[0]).find('.validation-summary-box.ng-hide').length).toBe(1);
-	});
+    // Assert
+    var length= $(element[0]).find('#errorListContainer').children().length;
+
+    expect(length).toBe(2);
+    expect($(element[0]).find('.validation-summary-box.ng-hide').length).toBe(0);
+  });
+
+  it('should find no elements and be hidden when no error is present', function(){
+
+    // Arrange
+    var html = "<div ng-init='person = {name: 2, surName:3}'>" +
+            "<div ng-validations-container=''>" +
+              "<form name='personInformation'>"+
+              "<input type='text' id='personName' name='personName' ng-model='person.name'"+
+              "ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
+              "<input type='text' id='personName' name='personName' ng-model='person.surName'"+
+              "ng-minlength='4' ng-validation-bubble='' validation-friendly-name='Name'/>"+
+              "</form>" +
+              "<div ng-validation-summary=''></div>" +
+            "</div>" +
+             "</div>";
+
+    var element = angular.element(html); // If jQuery is available, angular.element is an alias for the jQuery function. If jQuery is not available, angular.element delegates to Angular's built-in subset of jQuery called jQuery lite
+
+    // Act
+    var compiled = compile(element)(scope);
+    scope.$digest();
+    scope.person.name = "test";
+    scope.person.surName = "test";
+    scope.$digest();
+
+    // Assert
+    var length= $(element[0]).find('#errorListContainer').children().length;
+
+    expect(length).toBe(0);
+    expect($(element[0]).find('.validation-summary-box.ng-hide').length).toBe(1);
+  });
 
 });

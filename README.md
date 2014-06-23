@@ -13,8 +13,8 @@ Visit the [ngValidationSummary page](http://lemoncode.github.io/ngValidationSumm
 * AngularJS
 
 ###Contributors
-* [Braulio Diez](https://github.com/brauliodiezbrauliodiez)
-* [Rosana Ruiz](https://github.com/brauliodiez) 
+* [Braulio Diez](https://github.com/brauliodiez)
+* [Rosana Ruiz](https://github.com/totemika) 
 * [Jaime Salas](https://github.com/JaimeSalas)
 * [Dani Sanchez](https://github.com/Nasdan)
 

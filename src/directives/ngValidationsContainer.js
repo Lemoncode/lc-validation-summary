@@ -9,7 +9,8 @@
 
       this.getValidationMessages = function () {
         return $scope.validationMessages;
-      },
+      }
+      
       this.$updateValidationResult = function (elementModel, friendlyControlName, validationCustomerrordirective, validationCustomErrorMessage) {
         var validationKeys = validationContainerService.extractValidations(elementModel);
 

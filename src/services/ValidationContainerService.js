@@ -49,7 +49,7 @@ ngValidationSummary.provider('validationContainerService', function () {
           if(typeof elementModel.$error == 'undefined'){
             $log.warn('The validationBubble has been set to an element with no $error property');
             return validations;
-          };
+          }
 
           angular.forEach(supportedValidations, function(supportedValidation, key) {
             var validationType = supportedValidation.type;

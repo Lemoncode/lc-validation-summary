@@ -4,7 +4,7 @@ describe('arrayUtilties test', function () {
       // http://stackoverflow.com/questions/13400687/cant-retrieve-the-injector-from-angular
 
       // Arrange
-      var $injector = angular.injector(['ng', 'ngValidationSummary']);
+      var $injector = angular.injector(['ng', 'lcValidationSummary']);
       var myArrayUtilities = $injector.get('arrayUtilities');
       var myList = [
         { id: 1, name: 'john' },
@@ -24,7 +24,7 @@ describe('arrayUtilties test', function () {
         // http://stackoverflow.com/questions/13400687/cant-retrieve-the-injector-from-angular
 
         // Arrange
-        var $injector = angular.injector(['ng', 'ngValidationSummary']);
+        var $injector = angular.injector(['ng', 'lcValidationSummary']);
         var myArrayUtilities = $injector.get('arrayUtilities');
         var myList = [
           { id: 3, name: 'john' },
@@ -41,12 +41,12 @@ describe('arrayUtilties test', function () {
   });
 
 
-  describe('when I call findAvailableNextNumericKey passing as param aan empty list', function () {
+  describe('when I call findAvailableNextNumericKey passing as param an empty list', function () {
     it('returns the next key available" ', function () {
         // http://stackoverflow.com/questions/13400687/cant-retrieve-the-injector-from-angular
 
         // Arrange
-        var $injector = angular.injector(['ng', 'ngValidationSummary']);
+        var $injector = angular.injector(['ng', 'lcValidationSummary']);
         var myArrayUtilities = $injector.get('arrayUtilities');
         var myList = [
         ];
@@ -64,7 +64,7 @@ describe('arrayUtilties test', function () {
         // http://stackoverflow.com/questions/13400687/cant-retrieve-the-injector-from-angular
 
         // Arrange
-        var $injector = angular.injector(['ng', 'ngValidationSummary']);
+        var $injector = angular.injector(['ng', 'lcValidationSummary']);
         var myArrayUtilities = $injector.get('arrayUtilities');
         var myList = [
           { id: 1, name: 'john' },
@@ -88,7 +88,7 @@ describe('arrayUtilties test', function () {
       // http://stackoverflow.com/questions/13400687/cant-retrieve-the-injector-from-angular
 
       // Arrange
-      var $injector = angular.injector(['ng', 'ngValidationSummary']);
+      var $injector = angular.injector(['ng', 'lcValidationSummary']);
       var myArrayUtilities = $injector.get('arrayUtilities');
       var myList = [
         "item0",
@@ -115,7 +115,7 @@ describe('arrayUtilties test', function () {
       // http://stackoverflow.com/questions/13400687/cant-retrieve-the-injector-from-angular
 
       // Arrange
-      var $injector = angular.injector(['ng', 'ngValidationSummary']);
+      var $injector = angular.injector(['ng', 'lcValidationSummary']);
       var myArrayUtilities = $injector.get('arrayUtilities');
       var myList = [
         "item0",
@@ -142,7 +142,7 @@ describe('arrayUtilties test', function () {
         // http://stackoverflow.com/questions/13400687/cant-retrieve-the-injector-from-angular
 
         // Arrange
-        var $injector = angular.injector(['ng', 'ngValidationSummary']);
+        var $injector = angular.injector(['ng', 'lcValidationSummary']);
         var myArrayUtilities = $injector.get('arrayUtilities');
         var myList = [
           "item0",
@@ -166,7 +166,7 @@ describe('arrayUtilties test', function () {
     it('returns true, removes the element, and the list length decreases in one ', function () {
 
       // Arrange
-      var $injector = angular.injector(['ng', 'ngValidationSummary']);
+      var $injector = angular.injector(['ng', 'lcValidationSummary']);
       var myArrayUtilities = $injector.get('arrayUtilities');
 
       describe('removeFirstelementByFilter', function () {
@@ -197,7 +197,7 @@ describe('arrayUtilties test', function () {
     it('returns false,the element remains unexistent, and the list length doesnt vary at all ', function () {
 
       // Arrange
-      var $injector = angular.injector(['ng', 'ngValidationSummary']);
+      var $injector = angular.injector(['ng', 'lcValidationSummary']);
       var myArrayUtilities = $injector.get('arrayUtilities');
 
       describe('removeFirstelementByFilter', function () {

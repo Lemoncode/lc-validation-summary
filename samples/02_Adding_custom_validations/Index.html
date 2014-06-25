@@ -1,14 +1,14 @@
 <html>
 
 <head>
-	<title>ngValidationSummary - Sample 02 Set of validations</title>
+	<title>lcValidationSummary - Sample 02 Set of validations</title>
 
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="../../build/ngValidationSummary.css" />
+	<link rel="stylesheet" href="../../build/lcValidationSummary.css" />
 
 	<script src="https://code.angularjs.org/1.2.16/angular.js"></script>
-	<script src="../../build/ngvalidationsummary.js"></script>
-	<script src="../../build/ngvalidationSummary-tpl.js"></script>
+	<script src="../../build/lcvalidationsummary.js"></script>
+	<script src="../../build/lcvalidationSummary-tpl.js"></script>
 
 <script src="app.js"></script>
 
@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-md-10">
         <h2>
-          ngValidationSummary<small>Sample 02 - Validation using a custom directive</small>
+          lcValidationSummary<small>Sample 02 - Validation using a custom directive</small>
         </h2>
       </div>
       <div class="col-md-2">
@@ -35,7 +35,7 @@
     </div>
   </div>
 <div class="voffset6">
-	<div ng-controller="sampleController" ng-validations-container>
+	<div ng-controller="sampleController" lc-validations-container>
 		<form name="userForm">
 			<div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8">
 				<div class="col-sm-6 col-md-6">
@@ -47,7 +47,7 @@
                                                 placeholder="Email"
                                                 name="entryScreenEmail"
                                                 ng-model="model.email"
-                                                ng-validation-bubble=""
+                                                lc-validation-bubble=""
                                                 validation-friendly-name="Email"
                                                 ng-required="true"
                                                 checkvalidationemail=""
@@ -66,7 +66,7 @@
                                             placeholder="Confirm Email"
                                             name="entryScreenConfirmationEmail"
                                             ng-model="model.confirmationEmail"
-                                            ng-validation-bubble=""
+                                            lc-validation-bubble=""
                                             validation-friendly-name="Confirm Email"
                                             fieldtomatchmodelproperty="model.email" 
                                             checktwofieldsmatch="true"
@@ -77,7 +77,7 @@
 				</div>
 			</div>
 		</form>
-		<div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8" ng-validation-summary=""></div>
+		<div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8" lc-validation-summary=""></div>
 	</div>
 </div>
 </body>

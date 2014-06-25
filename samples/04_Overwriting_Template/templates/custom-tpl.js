@@ -1,7 +1,7 @@
-angular.module('ngValidationSummary').run(['$templateCache', function($templateCache) {
+angular.module('lcValidationSummary').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('./src/directives/ngValidationSummary.html',
+  $templateCache.put('./src/directives/lcValidationSummary.html',
     "<div class='validation-summary-box'\n" +
     "        ng-show='validationsSummary.length>0'\n" +
     "    >\n" +

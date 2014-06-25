@@ -10,7 +10,7 @@ module.exports = function(grunt) {
     copy: {
       main: {
          files: [
-          {expand: true, flatten: true, src: ['./css/ngValidationSummary.css'], dest: './build/',  filter: 'isFile'}
+          {expand: true, flatten: true, src: ['./css/lcValidationSummary.css'], dest: './build/',  filter: 'isFile'}
          ]
       }
     },
@@ -26,18 +26,18 @@ module.exports = function(grunt) {
      },
 
       ngtemplates: {
-        ngValidationSummary: {
-          module:'ngValidationSummary',
+        lcValidationSummary: {
+          module:'lcValidationSummary',
           standalone: false,
           src:['./src/directives/*.html'],
-          dest: './build/ngvalidationSummary-tpl.js'
+          dest: './build/lcvalidationSummary-tpl.js'
         }
       },
 
     concat: {
       dist: {
         src: ['./src/namespace.js', './src/directives/*.js', './src/services/*.js'],
-        dest: './build/ngvalidationsummary.js'
+        dest: './build/lcvalidationsummary.js'
       }
     },
 
@@ -45,8 +45,8 @@ module.exports = function(grunt) {
       all: {
         files: [
           {
-            src: ['./build/ngvalidationsummary.js'],
-            dest: './build/ngvalidationsummary.js',
+            src: ['./build/lcvalidationsummary.js'],
+            dest: './build/lcvalidationsummary.js',
             ext: '.js'
           }
         ]
@@ -57,8 +57,8 @@ module.exports = function(grunt) {
       all: {
         files: [
           {
-            src: ['./build/ngvalidationsummary.js'],
-            dest: './build/ngvalidatinsummary.min.js',
+            src: ['./build/lcvalidationsummary.js'],
+            dest: './build/lcvalidatinsummary.min.js',
           }
         ]
       }

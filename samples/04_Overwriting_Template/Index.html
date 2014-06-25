@@ -1,13 +1,13 @@
 <html>
 
 <head>
-  <title>ngValidationSummary - Sample 04 Using a custom template</title>
+  <title>lcValidationSummary - Sample 04 Using a custom template</title>
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="style/custom.css" />
 
   <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
-  <script src="../../build/ngvalidationsummary.js"></script>
+  <script src="../../build/lcvalidationsummary.js"></script>
   <script src="templates/custom-tpl.js"></script>
   <script src="app.js"></script>
 
@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-md-10">
         <h2>
-          ngValidationSummary
+          lcValidationSummary
           <small>Sample 04 - Using a custom template</small>
         </h2>
       </div>
@@ -39,7 +39,7 @@
 
   <!--=Form-->
   <div class="voffset6">
-    <div ng-controller="sampleController" ng-validations-container="">
+    <div ng-controller="sampleController" lc-validations-container="">
       <form name="userForm">
         <div class="form-group">
           <label class="control-label" for="userName">Name:</label>
@@ -50,7 +50,7 @@
                     type="text" 
                     ng-model="name" 
                     ng-required="true"                            
-                    ng-validation-bubble="" 
+                    lc-validation-bubble="" 
                     validation-friendly-name="User name"/>
           </div>
         </div>
@@ -63,7 +63,7 @@
                    class="form-control col-md-12"
                    type="text" 
                    ng-model="lastname" 
-                   ng-validation-bubble="" 
+                   lc-validation-bubble="" 
                    validation-friendly-name="User surname" />
           </div>
         </div>
@@ -71,7 +71,7 @@
       </form>
       <!-- #Form -->
       
-        <div ng-validation-summary=""></div>
+        <div lc-validation-summary=""></div>
       
     </div>
   </div>

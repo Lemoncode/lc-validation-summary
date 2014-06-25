@@ -4,7 +4,7 @@ describe('validationSummary Spec', function () {
   var compile;
 
   beforeEach(function(){
-    module('ngValidationSummary');
+    module('lcValidationSummary');
     inject(function($compile, $rootScope){
       scope = $rootScope.$new();
       compile = $compile;
@@ -14,14 +14,14 @@ describe('validationSummary Spec', function () {
   it('Should add no validations when using validations in a form and forcing them to pass ',function(){
     // Arrange
     var html = "<div ng-init='person = {name: 2}'>" +
-            "<div ng-validations-container=''>" +
+            "<div lc-validations-container=''>" +
               "<form name='personInformation'>"+
               "<input type='text' id='personName' name='personName' ng-model='person.name'"+
-              "ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
+              "ng-required='true' lc-validation-bubble='' validation-friendly-name='Name'/>"+
               "<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-              "ng-minlength='4' ng-validation-bubble='' validation-friendly-name='Name'/>"+
+              "ng-minlength='4' lc-validation-bubble='' validation-friendly-name='Name'/>"+
               "</form>" +
-              "<div validationsummary=''></div>" +
+              "<div lc-validation-summary=''></div>" +
             "</div>" +
              "</div>";
 
@@ -44,12 +44,12 @@ describe('validationSummary Spec', function () {
   it('Should add one validationmessage when using a validation in a form and forcing it fail ',function(){
     // Arrange
     var html = "<div ng-init='person = {name: 2}'>" +
-            "<div ng-validations-container=''>" +
+            "<div lc-validations-container=''>" +
               "<form name='personInformation'>"+
               "<input type='text' id='personName' name='personName' ng-model='person.name'"+
-              "ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
+              "ng-required='true' lc-validation-bubble='' validation-friendly-name='Name'/>"+
               "</form>" +
-              "<div validationsummary=''></div>" +
+              "<div lc-validation-summary=''></div>" +
             "</div>" +
              "</div>";
 
@@ -70,14 +70,14 @@ describe('validationSummary Spec', function () {
   it('Should add two validationmessages when using two validations in a form and forcing them fail ',function(){
     // Arrange
     var html = "<div ng-init='person = {name: 2}'>" +
-            "<div ng-validations-container=''>" +
+            "<div lc-validations-container=''>" +
               "<form name='personInformation'>"+
               "<input type='text' id='personName' name='personName' ng-model='person.name'"+
-              "ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
+              "ng-required='true' lc-validation-bubble='' validation-friendly-name='Name'/>"+
               "<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-              "ng-minlength='4' ng-validation-bubble='' validation-friendly-name='Name'/>"+
+              "ng-minlength='4' lc-validation-bubble='' validation-friendly-name='Name'/>"+
               "</form>" +
-              "<div validationsummary=''></div>" +
+              "<div lc-validation-summary=''></div>" +
             "</div>" +
              "</div>";
 
@@ -101,14 +101,14 @@ describe('validationSummary Spec', function () {
   it('Should add one validationmessage when using two validations in a form and forcing just one to fail ',function(){
     // Arrange
     var html = "<div ng-init='person = {name: 2}'>" +
-            "<div ng-validations-container=''>" +
+            "<div lc-validations-container=''>" +
               "<form name='personInformation'>"+
               "<input type='text' id='personName' name='personName' ng-model='person.name'"+
-              "ng-required='true' ng-validation-bubble='' validation-friendly-name='Name'/>"+
+              "ng-required='true' lc-validation-bubble='' validation-friendly-name='Name'/>"+
               "<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-              "ng-minlength='4' ng-validation-bubble='' validation-friendly-name='Name'/>"+
+              "ng-minlength='4' lc-validation-bubble='' validation-friendly-name='Name'/>"+
               "</form>" +
-              "<div validationsummary=''></div>" +
+              "<div lc-validation-summary=''></div>" +
             "</div>" +
              "</div>";
 

@@ -1,1 +1,1 @@
-var ngValidationSummary = angular.module('ngValidationSummary',[]);
+var lcValidationSummary = angular.module('lcValidationSummary',[]);

@@ -21,6 +21,9 @@ module.exports = function(grunt) {
             hostname: 'localhost',
             port: 8080,
             keepalive:true,
+            open: {
+              target: 'http://localhost:8080/samples/index.html'
+            }
           }
         }
      },

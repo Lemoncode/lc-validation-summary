@@ -1,5 +1,5 @@
-var ngValidationSummary = angular.module('ngValidationSummary', []);
-ngValidationSummary.directive('ngValidationBubble', function () {
+var lcValidationSummary = angular.module('lcValidationSummary', []);
+lcValidationSummary.directive('lcValidationBubble', function () {
   var checkDirectivePrerequisites = function (attr, form, validationsContainer) {
     if (!attr.name) {
       throw 'validationbubble must be set on an input element that has a \'name\' attribute';
@@ -15,38 +15,38 @@ ngValidationSummary.directive('ngValidationBubble', function () {
     require: [
       'ngModel',
       '^form',
-      '^ngValidationsContainer'
+      '^lcValidationsContainer'
     ],
     restrict: 'A',
     link: function (scope, element, attr, ctrls) {
       var model = ctrls[0];
       var form = ctrls[1];
-      var ngValidationsContainer = ctrls[2];
+      var lcValidationsContainer = ctrls[2];
       var validationFriendlyName = attr.validationFriendlyName;
       var validationCustomErrorDirective = attr.validationCustomErrorDirective;
       var validationCustomErrorMessage = attr.validationCustomErrorMessage;
-      checkDirectivePrerequisites(attr, form, ngValidationsContainer);
+      checkDirectivePrerequisites(attr, form, lcValidationsContainer);
       var propertyToWatch = form.$name + '.' + model.$name + '.$valid';
       scope.$watch(propertyToWatch, function (isValid, lastValue) {
         if (typeof isValid !== 'undefined') {
-          ngValidationsContainer.$updateValidationResult(model, validationFriendlyName, validationCustomErrorDirective, validationCustomErrorMessage);
+          lcValidationsContainer.$updateValidationResult(model, validationFriendlyName, validationCustomErrorDirective, validationCustomErrorMessage);
         }
       });
     }
   };
 });
-ngValidationSummary.directive('ngValidationSummary', [function () {
+lcValidationSummary.directive('lcValidationSummary', [function () {
     return {
       restrict: 'A',
-      require: '^ngValidationsContainer',
-      templateUrl: './src/directives/ngValidationSummary.html',
+      require: '^lcValidationsContainer',
+      templateUrl: './src/directives/lcValidationSummary.html',
       link: function (scope, element, attr, ctrl) {
         var valContainer = ctrl;
         scope.validationsSummary = valContainer.getValidationMessages();
       }
     };
   }]);
-ngValidationSummary.directive('ngValidationsContainer', [
+lcValidationSummary.directive('lcValidationsContainer', [
   'arrayUtilities',
   'validationContainerService',
   function (arrayUtilities, validationContainerService) {
@@ -61,7 +61,8 @@ ngValidationSummary.directive('ngValidationsContainer', [
           $scope.validationMessages = [];
           this.getValidationMessages = function () {
             return $scope.validationMessages;
-          }, this.$updateValidationResult = function (elementModel, friendlyControlName, validationCustomerrordirective, validationCustomErrorMessage) {
+          };
+          this.$updateValidationResult = function (elementModel, friendlyControlName, validationCustomerrordirective, validationCustomErrorMessage) {
             var validationKeys = validationContainerService.extractValidations(elementModel);
             angular.forEach(validationKeys, function (value, key) {
               var currentValidationKey = validationContainerService.buildValidationKey(elementModel.$name, value.validationType);
@@ -87,7 +88,7 @@ ngValidationSummary.directive('ngValidationsContainer', [
     };
   }
 ]);
-ngValidationSummary.provider('validationContainerService', function () {
+lcValidationSummary.provider('validationContainerService', function () {
   var supportedValidations = [
       {
         type: 'required',
@@ -132,7 +133,6 @@ ngValidationSummary.provider('validationContainerService', function () {
               $log.warn('The validationBubble has been set to an element with no $error property');
               return validations;
             }
-            ;
             angular.forEach(supportedValidations, function (supportedValidation, key) {
               var validationType = supportedValidation.type;
               if (typeof elementModel.$error[validationType] !== 'undefined') {
@@ -173,7 +173,7 @@ ngValidationSummary.provider('validationContainerService', function () {
     ]
   };
 });
-ngValidationSummary.factory('arrayUtilities', [function () {
+lcValidationSummary.factory('arrayUtilities', [function () {
     return {
       findAvailableNextNumericKey: function (originalList, fieldName) {
         var maxvalue = 0;

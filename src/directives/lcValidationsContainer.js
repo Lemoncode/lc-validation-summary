@@ -1,4 +1,4 @@
-﻿ngValidationSummary.directive('ngValidationsContainer', ['arrayUtilities', 'validationContainerService', function (arrayUtilities, validationContainerService) {
+﻿lcValidationSummary.directive('lcValidationsContainer', ['arrayUtilities', 'validationContainerService', function (arrayUtilities, validationContainerService) {
   return {
     restrict: "A",
     link: function (scope, element, attr, ctrl) {

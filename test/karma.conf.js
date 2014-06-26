@@ -17,8 +17,8 @@ module.exports = function(config) {
     files: [
       'test/lib/jquery/dist/jquery.js',	
       'lib/angular/angular.js',
-      'build/ngvalidationSummary.js',
-      'build/ngvalidationSummary-tpl.js',
+      'build/lcvalidationSummary.js',
+      'build/lcvalidationSummary-tpl.js',
       'test/lib/angular-mocks/angular-mocks.js',
       'test/*.js'      
     ],

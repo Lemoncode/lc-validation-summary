@@ -1,14 +1,14 @@
 <html>
 
 <head>
-  <title>ngValidationSummary - Sample 03 Custom Validation Message</title>
+  <title>lcValidationSummary - Sample 03 Custom Validation Message</title>
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../../build/ngValidationSummary.css" />
+  <link rel="stylesheet" href="../../build/lcValidationSummary.css" />
 
   <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
-  <script src="../../build/ngvalidationsummary.js"></script>
-  <script src="../../build/ngvalidationSummary-tpl.js"></script>
+  <script src="../../build/lcvalidationsummary.js"></script>
+  <script src="../../build/lcvalidationSummary-tpl.js"></script>
   <script src="app.js"></script>
 
 </head>
@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-md-10">
         <h2>
-          ngValidationSummary<small> Sample 03 - Using custom Validation Messages</small>
+          lcValidationSummary<small> Sample 03 - Using custom Validation Messages</small>
         </h2>
       </div>
       <div class="col-md-2">
@@ -34,7 +34,7 @@
     </div>
   </div>
 <div class="voffset6">
-  <div ng-controller="sampleController" ng-validations-container>
+  <div ng-controller="sampleController" lc-validations-container>
     <form name="userForm">
     
       <div class="form-group">
@@ -46,7 +46,7 @@
                    class="form-control col-md-12"
                    type="text" 
                    ng-model="model.alias"
-                   ng-validation-bubble=""
+                   lc-validation-bubble=""
                    ng-pattern="/(^\D{4})+(\d{2})$/"
                    validation-custom-error-directive="pattern"
                    validation-custom-error-message="Alias: An alias must be composed by 4 characters and 2 digits."
@@ -59,7 +59,7 @@
                    class="form-control col-md-12"
                    type="text" 
                    ng-model="model.password"
-                   ng-validation-bubble=""
+                   lc-validation-bubble=""
                    ng-minlength="6"
                    validation-custom-error-directive="minlength"
                    validation-custom-error-message="Password: Must be at least 6 characters long."
@@ -72,7 +72,7 @@
                    name="email" 
                    class="form-control col-md-12"
                    ng-model="model.email"
-                   ng-validation-bubble=""
+                   lc-validation-bubble=""
                    ng-pattern="/(^\S{1,})+(@gmail\.com)/"
                    validation-custom-error-directive="pattern"
                    validation-custom-error-message="Email: Must ve a valid Gmail account."
@@ -88,12 +88,12 @@
                    ng-pattern="/^\d{10}$/"
                    validation-custom-error-directive="pattern"
                    validation-custom-error-message="Phone number: Must be formed by 10 digits."
-                   ng-validation-bubble=""
+                   lc-validation-bubble=""
                    validation-friendly-name="Phone number" />
         </div>
       </div>
     </form>
-    <div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8" ng-validation-summary=""></div>
+    <div class="col-sm-offset-3 col-sm-6 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8" lc-validation-summary=""></div>
   </div>
 </div>
 </body>

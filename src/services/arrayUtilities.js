@@ -1,4 +1,4 @@
-ngValidationSummary.factory('arrayUtilities', [function () {
+lcValidationSummary.factory('arrayUtilities', [function () {
   return {
     findAvailableNextNumericKey: function (originalList, fieldName) {
       var maxvalue = 0;

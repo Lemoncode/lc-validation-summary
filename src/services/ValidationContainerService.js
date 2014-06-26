@@ -1,4 +1,4 @@
-ngValidationSummary.provider('validationContainerService', function () {
+lcValidationSummary.provider('validationContainerService', function () {
 
   var supportedValidations = [
     {

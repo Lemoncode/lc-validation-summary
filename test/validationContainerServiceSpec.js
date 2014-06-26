@@ -5,7 +5,7 @@ describe('validationContainerService test', function () {
   var validationContainerService;
 
   beforeEach(function(){
-    $injector =angular.injector(['ng','ngValidationSummary']);
+    $injector =angular.injector(['ng','lcValidationSummary']);
     validationContainerService = $injector.get('validationContainerService');
   });
 
@@ -139,10 +139,10 @@ describe("validationContainerService Provider test", function(){
   var validationService;
 
   beforeEach(function(){
-    angular.mock.module('ngValidationSummary');
+    angular.mock.module('lcValidationSummary');
 
     module(function(validationContainerServiceProvider){
-      configProvider=validationContainerServiceProvider;
+      configProvider = validationContainerServiceProvider;
     });
     inject(function ($log, validationContainerService){
       validationService = validationContainerService;

@@ -1,14 +1,14 @@
 <html>
 
 <head>
-  <title>ngValidationSummary - Sample 00 Basic summary</title>
+  <title>lcValidationSummary - Sample 00 Basic summary</title>
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../../build/ngValidationSummary.css" />
+  <link rel="stylesheet" href="../../build/lcValidationSummary.css" />
 
   <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
-  <script src="../../build/ngvalidationsummary.js"></script>
-  <script src="../../build/ngvalidationSummary-tpl.js"></script>
+  <script src="../../build/lcvalidationsummary.js"></script>
+  <script src="../../build/lcvalidationSummary-tpl.js"></script>
   <script src="app.js"></script>
 
 </head>
@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-md-10">
         <h2>
-          ngValidationSummary
+          lcValidationSummary
           <small>Sample 00 - Basic summary</small>
         </h2>
       </div>
@@ -36,7 +36,7 @@
   </div>
 
   <div class="voffset6">
-    <div ng-controller="sampleController" ng-validations-container="">
+    <div ng-controller="sampleController" lc-validations-container="">
     <div>
       <form name="userForm">
         <div class="form-group">
@@ -48,7 +48,7 @@
                             type="text"
                             ng-model="name"
                             ng-required="true"
-                            ng-validation-bubble=""
+                            lc-validation-bubble=""
                             validation-friendly-name="User name"
                              />
           </div>
@@ -62,14 +62,14 @@
                            class="form-control col-md-12"
                            type="text"
                            ng-model="lastname"
-                           ng-validation-bubble=""
+                           lc-validation-bubble=""
                            validation-friendly-name="User surname" />
           </div>
         </div>
 
       </form>
     </div>
-        <div ng-validation-summary=""></div>
+        <div lc-validation-summary=""></div>
     </div>
   </div>
 </body>

@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
   
 
-  <title>Ngvalidationsummary</title>
+  <title>lc-validation-summary</title>
 </head>
 
 <body>
@@ -17,16 +17,16 @@
   <!-- HEADER -->
   <div id="header_wrap" class="outer">
     <header class="inner">
-      <a id="forkme_banner" href="https://github.com/Lemoncode/ngValidationSummary">View on GitHub</a>
+      <a id="forkme_banner" href="https://github.com/Lemoncode/lc-validation-summary">View on GitHub</a>
 
-      <h1 id="project_title">ngValidationSummary</h1>
+      <h1 id="project_title">lc-validation-summary</h1>
       <h2 id="project_tagline">
         Angular directive for providing a validation summary to angular based forms.
       </h2>
 
       <section id="downloads">
-        <a class="zip_download_link" href="https://github.com/Lemoncode/ngValidationSummary/zipball/master">Download this project as a .zip file</a>
-        <a class="tar_download_link" href="https://github.com/Lemoncode/ngValidationSummary/tarball/master">Download this project as a tar.gz file</a>
+        <a class="zip_download_link" href="https://github.com/Lemoncode/lc-validation-summary/zipball/master">Download this project as a .zip file</a>
+        <a class="tar_download_link" href="https://github.com/Lemoncode/lc-validation-summary/tarball/master">Download this project as a tar.gz file</a>
       </section>
     </header>
   </div>
@@ -44,19 +44,19 @@
       <a href="https://github.com/Lemoncode/lc-validation-summary/zipball/master">Download</a>, unzip the source code folder and add the build files to your project.
       
       <h6>Install with Bower</h6>
-      Install and use ngValidationSummary using <a href="http://bower.io/">Bower</a>
-      <pre class="prettyprintt">$ bower install ngValidationSummary</pre>
+      Install and use lc-validation-summary using <a href="http://bower.io/">Bower</a>
+      <pre class="prettyprintt">$ bower install lc-validation-summary</pre>
       <h2>Dependencies</h2>
       <ul><li>AngularJS</li></ul>
       <h2>Getting started</h2>
       <p>
        <ol>
-        <li>Add references to <a href="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">AngularJS</a> and <a href="https://github.com/Lemoncode/ngValidationSummary">ngValidationSummary</a>'s js and css files</li>
-        <li>Where you declare your app module, add ngValidationSummary:</li>
-        <pre class="prettyprint">angular.module('myApp',['ngValidationSummary']);</pre>
-        <li>Wrap your html form with the directive <code>ng-validations-container</code>:</li>
+        <li>Add references to <a href="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">AngularJS</a> and <a href="https://github.com/Lemoncode/lc-validation-summary">lc-validation-summary</a>'s js and css files</li>
+        <li>Where you declare your app module, add lc-validation-summary:</li>
+        <pre class="prettyprint">angular.module('myApp',['lc-validation-summary']);</pre>
+        <li>Wrap your html form with the directive <code>lc-validations-container</code>:</li>
           <pre class="prettyprint no_padding">
-&ltdiv ng-validations-container&gt
+&ltdiv lc-validations-container&gt
   &ltform name="userForm"&gt
     &ltlabel for="userName"&gtName:&lt/label&gt
     &ltinput id="userName"
@@ -64,21 +64,21 @@
            ng-model="model.name"/&gt
   &lt/form&gt
 &lt/div&gt</pre>
-<li>Now, each input in the form you want to validate must contain a <code>ng-validation-bubble</code> wich will notify the non-passing validations to the <code>ng-validations-container</code>. Then add one of the <a href="#supportedValidations">default supported validations </a> or <a href="#customValidations">add your custom validation</a> (in this example we use <code>ng-required</code>) and define a <code>validation-friendly-name</code> to show in the view</li>
+<li>Now, each input in the form you want to validate must contain a <code>lc-validation-bubble</code> wich will notify the non-passing validations to the <code>lc-validations-container</code>. Then add one of the <a href="#supportedValidations">default supported validations </a> or <a href="#customValidations">add your custom validation</a> (in this example we use <code>ng-required</code>) and define a <code>validation-friendly-name</code> to show in the view</li>
         <pre class="prettyprint">
-&ltdiv ng-validations-container&gt
+&ltdiv lc-validations-container&gt
   &ltform name="userForm"&gt
     &ltlabel for="userName"&gtName:&lt/label&gt
     &ltinput id="userName"
            type="text"
            ng-model="model.name"/&gt
            ng-required="true"
-           ng-validation-bubble=""
+           lc-validation-bubble=""
            validation-friendly-name="User Name" 
   &lt/form&gt
 &lt/div&gt</pre>
-        <li>In your html file, within the controller where you want to use ngValidationSummary, add a div element with the<code>ng-validation-summary</code> directive. This div will show the validation results to the user interface :</li>
-        <pre class="prettyprint">&ltdiv ng-validation-summary=""&gt&lt/div&gt</pre>
+        <li>In your html file, within the controller where you want to use lcValidationSummary, add a div element with the<code>lc-validation-summary</code> directive. This div will show the validation results to the user interface :</li>
+        <pre class="prettyprint">&ltdiv lc-validation-summary=""&gt&lt/div&gt</pre>
        </ol>
        
        <p>
@@ -102,7 +102,7 @@
     <section class="inner">
     <h2>Default values</h2>
       <h3 id="supportedValidations"> Default supported Validations</h3>
-          The default supported validations contained in <code>ngValidationProvider</code> and their default custom error messages are:
+          The default supported validations contained in <code>lcValidationProvider</code> and their default custom error messages are:
           <br><br>
 
           <table>
@@ -128,8 +128,8 @@
            <li>In the html code, add your directive to an input field</li>
            <pre class="prettyprint">
 &ltinput name="myInput"
-       myCustomValidation=""
-       ng-validation-bubble=""
+       my-custom-validation=""
+       lc-validation-bubble=""
        validation-friendly-name="myInputFriendlyName"/&gt</pre>
        </ol>
        Sample code in: <strong><a href="#sample02">Sample 02 - Using a custom validation</a></strong>
@@ -147,17 +147,17 @@
        validation-custom-error-directive="myCustomValidation"
        validation-custom-error-message="My custom error mesage"
        validation-friendly-name="myInputFriendlyName"
-       ng-validation-bubble=""/&gt
+       lc-validation-bubble=""/&gt
            </pre>
        </ol>
        Sample code in: <strong><a href="#sample03">Sample 03 - Adding custom error messages</a></strong>
     </section>
      <section class="inner">
       <h3 id="customTemplate"> Using a custom template</h3>
-       You can also add your custom template by overwritting the <code>ngvalidationSummary-tpl.js</code> template code:
+       You can also add your custom template by overwritting the <code>lcvalidationSummary-tpl.js</code> template code:
        <ol>
           <li>Create a new js file and name it whatever you want.</li>
-          <li>Copy the content of ngvalidationSummary-tpl.js into your new file.</li>
+          <li>Copy the content of lcvalidationSummary-tpl.js into your new file.</li>
           <li>Overwrite the template with your custom style and html.
             
           </li>
@@ -229,7 +229,7 @@
     <section class="inner">
       <h3 id="sample04">Sample 04 - Using a custom template </h3>
       <p>
-        Overwrite the ngValidationSummary. template by simply linking to a custom template file ngValidationSummary-tpl.js
+        Overwrite the lcValidationSummary. template by simply linking to a custom template file lcValidationSummary-tpl.js
       </p>
       <iframe style="border: 1px solid #999;width: 100%; height: 320px" 
               src="http://embed.plnkr.co/OwY8KU?t=readme" 
@@ -247,7 +247,7 @@
   <div id="footer_wrap" class="outer">
     <footer class="inner">
       <p class="copyright">
-        Ngvalidationsummary maintained by
+        lc-validation-summary maintained by
         <a href="https://github.com/Lemoncode">Lemoncode</a>
       </p>
       <p>

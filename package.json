@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Lemoncode/ngValidationSummary.git"
+    "url": "https://github.com/Lemoncode/lc-validation-summary.git"
   },
   "author": "Braulio Diez",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Lemoncode/ngValidationSummary/issues"
+    "url": "https://github.com/Lemoncode/lc-validation-summary/issues"
   },
-  "homepage": "https://github.com/Lemoncode/ngValidationSummary",
+  "homepage": "https://github.com/Lemoncode/lc-validation-summary",
   "dependencies": {
 
   },

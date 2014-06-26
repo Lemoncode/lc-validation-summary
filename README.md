@@ -17,6 +17,7 @@ Visit the [lcValidationSummary page](http://lemoncode.github.io/lc-validation-su
 * [Rosana Ruiz](https://github.com/totemika) 
 * [Jaime Salas](https://github.com/JaimeSalas)
 * [Dani Sanchez](https://github.com/Nasdan)
+* [Jesús Rodríguez](https://github.com/Foxandxss)
 
 
 Powered by [Lemoncode] (https://github.com/Lemoncode)

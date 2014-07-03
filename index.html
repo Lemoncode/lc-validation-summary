@@ -59,7 +59,8 @@
 &ltdiv lc-validations-container&gt
   &ltform name="userForm"&gt
     &ltlabel for="userName"&gtName:&lt/label&gt
-    &ltinput id="userName"
+    &ltinput name="userName"
+           name="userName"
            type="text"
            ng-model="model.name"/&gt
   &lt/form&gt
@@ -69,14 +70,17 @@
 &ltdiv lc-validations-container&gt
   &ltform name="userForm"&gt
     &ltlabel for="userName"&gtName:&lt/label&gt
-    &ltinput id="userName"
+    &ltinput name="userName"
            type="text"
-           ng-model="model.name"/&gt
+           ng-model="model.name"
            ng-required="true"
            lc-validation-bubble=""
-           validation-friendly-name="User Name" 
+           validation-friendly-name="User Name" /&gt
   &lt/form&gt
 &lt/div&gt</pre>
+<table>
+<strong>Note:</strong> Don't miss adding the <strong>name</strong> attribute to the &ltform&gt and each of your &ltinput&gt elements.
+</table>
         <li>In your html file, within the controller where you want to use lcValidationSummary, add a div element with the<code>lc-validation-summary</code> directive. This div will show the validation results to the user interface :</li>
         <pre class="prettyprint">&ltdiv lc-validation-summary=""&gt&lt/div&gt</pre>
        </ol>

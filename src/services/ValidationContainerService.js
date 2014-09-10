@@ -1,22 +1,22 @@
 lcValidationSummary.provider('validationContainerService', function () {
 
   var supportedValidations = [
-    {
-      type: 'required',
-      friendlyDescription: "this field is mandatory"
-    },
-    {
-      type: 'pattern',
-      friendlyDescription: "this field doesn't match the pattern set"
-    },
-    {
-      type: 'maxlength',
-      friendlyDescription: "this field exceeds the maximum length"
-    },
-    {
-      type: 'minlength',
-      friendlyDescription: "this field doesn't reach the minimum length"
-    }
+  {
+    type: 'required',
+    friendlyDescription: "this field is mandatory"
+  },
+  {
+    type: 'pattern',
+    friendlyDescription: "this field doesn't match the pattern set"
+  },
+  {
+    type: 'maxlength',
+    friendlyDescription: "this field exceeds the maximum length"
+  },
+  {
+    type: 'minlength',
+    friendlyDescription: "this field doesn't reach the minimum length"
+  }
   ];
 
   return {
@@ -54,10 +54,10 @@ lcValidationSummary.provider('validationContainerService', function () {
           angular.forEach(supportedValidations, function(supportedValidation, key) {
             var validationType = supportedValidation.type;
             if (typeof elementModel.$error[validationType] !== 'undefined') {
-                validationItem = buildValidationItem(validationType,
-                    (elementModel.$error[validationType] == false));
+              validationItem = buildValidationItem(validationType,
+                (elementModel.$error[validationType] == false));
 
-                validations.push(validationItem);
+              validations.push(validationItem);
             }
           });
 
@@ -84,9 +84,10 @@ lcValidationSummary.provider('validationContainerService', function () {
           return validationText;
         },
 
-        buildValidationSummaryEntry: function(validationKey, controlFriendlyName, validation, validationCustomErrorDirective, validationCustomErrorMessage) {
+        buildValidationSummaryEntry: function(controlName, validationKey, controlFriendlyName, validation, validationCustomErrorDirective, validationCustomErrorMessage) {
           var item = {};
 
+          item.elementName = controlName;
           item.key = validationKey;
 
           if (typeof validationCustomErrorDirective != 'undefined' && validationCustomErrorDirective == validation) {

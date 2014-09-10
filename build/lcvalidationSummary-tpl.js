@@ -2,19 +2,19 @@ angular.module('lcValidationSummary').run(['$templateCache', function($templateC
   'use strict';
 
   $templateCache.put('./src/directives/lcValidationSummary.html',
-    "<div class='validation-summary-box' ng-show='validationsSummary.length>0'>\r" +
+    "<div class='validation-summary-box' ng-show='filteredItems.length > 0'>\r" +
     "\n" +
-    "  <div class=\"summaryTitle\">\r" +
+    "\t<div class=\"summaryTitle\">\r" +
     "\n" +
-    "    <h4>Please review the following fields:</h4>\r" +
+    "\t\t<h4>Please review the following fields:</h4>\r" +
     "\n" +
-    "  </div>\r" +
+    "\t</div>\r" +
     "\n" +
-    "  <ul id=\"errorListContainer\">\r" +
+    "\t<ul id=\"errorListContainer\">\r" +
     "\n" +
-    "    <li ng-repeat='item in validationsSummary'>{{item.errorMessage}}</li>\r" +
+    "\t\t<li ng-repeat='item in filteredItems = (validationsSummary | filter: elementName)'>{{item.errorMessage}}</li>\r" +
     "\n" +
-    "  </ul>\r" +
+    "\t</ul>\r" +
     "\n" +
     "</div>"
   );

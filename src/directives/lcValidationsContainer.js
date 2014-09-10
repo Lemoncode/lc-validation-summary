@@ -13,9 +13,10 @@
       
       this.$updateValidationResult = function (elementModel, friendlyControlName, validationCustomerrordirective, validationCustomErrorMessage) {
         var validationKeys = validationContainerService.extractValidations(elementModel);
+        var elementName = elementModel.$name;
 
         angular.forEach(validationKeys, function (value, key) {
-          var currentValidationKey = validationContainerService.buildValidationKey(elementModel.$name, value.validationType);
+          var currentValidationKey = validationContainerService.buildValidationKey(elementName, value.validationType);
           var indexItemValidationMessage = arrayUtilities.firstIndexMatchingCriteriaOrMinusOne($scope.validationMessages, 'key', [currentValidationKey]);
           var entryExistsInValidationMessage = (indexItemValidationMessage != -1);
 
@@ -28,7 +29,7 @@
             // Search in the master list of errors and add the entry if it doesn't exists
             if (!entryExistsInValidationMessage) {
               // Add element, push
-              var item = validationContainerService.buildValidationSummaryEntry(currentValidationKey, friendlyControlName, value.validationType, validationCustomerrordirective, validationCustomErrorMessage);
+              var item = validationContainerService.buildValidationSummaryEntry(elementName, currentValidationKey, friendlyControlName, value.validationType, validationCustomerrordirective, validationCustomErrorMessage);
               $scope.validationMessages.push(item);
             }
           }

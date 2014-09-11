@@ -29,7 +29,7 @@ var sampleApp = angular.module('sampleApp', ['ngValidationSummary'])
                 }
                 return viewValue;
             });
-
+            //Why you need to check the model's value? Why is not enough with the view value?
             var propertyToWatch = scope.fieldtomatchmodelproperty;
             scope.$parent.$watch(propertyToWatch, function (value, lastValue) {
                 if (typeof (currentControl.$viewValue != "undefined")) {

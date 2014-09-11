@@ -1,10 +1,10 @@
 ﻿ngValidationSummary.directive('ngValidationsContainer', ['arrayUtilities', 'validationContainerService', function (arrayUtilities, validationContainerService) {
     return {
         restrict: "A",
-        link: function (scope, element, attr, ctrl) {
+        link: function (scope, element, attr, ctrl) { //Remove link function unnecessary
 
         },
-        controller: ['$scope', '$element', function ($scope, $element) {
+        controller: ['$scope', '$element', function ($scope, $element) { //$element not necessary, you onluy have to use $scope service
             $scope.validationMessages = [];
 
             this.getValidationMessages = function () {

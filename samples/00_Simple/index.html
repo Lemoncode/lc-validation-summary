@@ -13,7 +13,7 @@
 
 </head>
 
-<body ng-app="sampleApp" class="container">
+<body ng-app="simmpleValidationApp" class="container">
   <div class="page-header">
     <div class="row">
       <div class="col-md-10">
@@ -36,7 +36,7 @@
   </div>
 
   <div class="voffset6">
-    <div ng-controller="sampleController" ng-validations-container="">
+    <div ng-controller="simmpleValidationController" ng-validations-container="">
     <div>
       <form name="userForm">
         <div class="form-group">
@@ -64,12 +64,13 @@
                            ng-model="lastname" 
                            ng-validation-bubble="" 
                            validation-friendly-name="User surname" />
+                           Si se mete un campo sin validación para que se le mete el validation bubble
           </div>
         </div>
 
       </form>
     </div>
-        <div ng-validation-summary=""></div>
+        <div ng-validation-summary=""></div> 
     </div>
   </div>
 </body>

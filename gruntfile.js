@@ -20,7 +20,8 @@ module.exports = function(grunt) {
 		      options: {
 		      	hostname: 'localhost',
 		        port: 8080,
-		        keepalive:true,		        
+		        keepalive:true,	
+		        open: "http://localhost:8080/samples/Index.html"	        
 		      }
 		    }
 		 },

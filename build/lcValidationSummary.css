@@ -14,11 +14,16 @@
 
 .validation-summary-box ul {
   list-style: decimal;
+  margin-top: 20px;
 }
 
-.validation-summary-box li {
+.validation-summary-box li,.validation-summary-box p{
   color: #c93d3d;
   padding: 7px;
+}
+
+.validation-summary-box p{
+  margin-top: 20px;
 }
 
 .validation-summary-title h4{

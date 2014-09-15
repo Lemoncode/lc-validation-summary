@@ -29,13 +29,13 @@
 
       checkDirectivePrerequisites(attr, form, lcValidationsContainer);
 
-      var propertyToWatch = form.$name + "." + model.$name + ".$valid";
+      var propertyToWatch = form.$name + "." + model.$name+".$error";
 
       scope.$watch(propertyToWatch, function (isValid, lastValue) {
         if (typeof isValid !== "undefined") {
           lcValidationsContainer.$updateValidationResult(model, validationFriendlyName, validationCustomErrorDirective, validationCustomErrorMessage);
         }
-      });
+      }, true);
     }
   };
 });

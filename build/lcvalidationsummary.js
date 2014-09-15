@@ -1,4 +1,19 @@
 var lcValidationSummary = angular.module('lcValidationSummary', []);
+lcValidationSummary.directive('lcSingleControlValidationSummary', [function () {
+    return {
+      restrict: 'A',
+      scope: {
+        elementName: '@lcSingleControlValidationSummary',
+        showOnlyFirstValidation: '='
+      },
+      require: '^lcValidationsContainer',
+      templateUrl: './src/directives/lcSingleControlValidationSummary.html',
+      link: function (scope, element, attr, ctrl) {
+        var valContainer = ctrl;
+        scope.validationsSummary = valContainer.getValidationMessages();
+      }
+    };
+  }]);
 lcValidationSummary.directive('lcValidationBubble', function () {
   var checkDirectivePrerequisites = function (attr, form, validationsContainer) {
     if (!attr.name) {
@@ -26,19 +41,18 @@ lcValidationSummary.directive('lcValidationBubble', function () {
       var validationCustomErrorDirective = attr.validationCustomErrorDirective;
       var validationCustomErrorMessage = attr.validationCustomErrorMessage;
       checkDirectivePrerequisites(attr, form, lcValidationsContainer);
-      var propertyToWatch = form.$name + '.' + model.$name + '.$valid';
+      var propertyToWatch = form.$name + '.' + model.$name + '.$error';
       scope.$watch(propertyToWatch, function (isValid, lastValue) {
         if (typeof isValid !== 'undefined') {
           lcValidationsContainer.$updateValidationResult(model, validationFriendlyName, validationCustomErrorDirective, validationCustomErrorMessage);
         }
-      });
+      }, true);
     }
   };
 });
 lcValidationSummary.directive('lcValidationSummary', [function () {
     return {
       restrict: 'A',
-      scope: { elementName: '@lcValidationSummary' },
       require: '^lcValidationsContainer',
       templateUrl: './src/directives/lcValidationSummary.html',
       link: function (scope, element, attr, ctrl) {

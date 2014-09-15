@@ -13,7 +13,7 @@
 
 </head>
 
-  <!--=Header-->
+<!--=Header-->
 <body ng-app="sampleApp" class="container">
   <div class="page-header">
     <div class="row">
@@ -45,13 +45,13 @@
           <label class="control-label" for="userName">Name:</label>
           <div class="">
             <input  id="userName" 
-                    name="userName" 
-                    class="form-control col-md-12"
-                    type="text" 
-                    ng-model="name" 
-                    ng-required="true"                            
-                    lc-validation-bubble="" 
-                    validation-friendly-name="User name"/>
+            name="userName" 
+            class="form-control col-md-12"
+            type="text" 
+            ng-model="model.name" 
+            ng-required="true"                            
+            lc-validation-bubble="" 
+            validation-friendly-name="User name"/>
           </div>
         </div>
 
@@ -59,19 +59,19 @@
           <label class="control-label" for="userSurname">Surname:</label>
           <div class="">
             <input id="userSurname" 
-                   name="userSurname" 
-                   class="form-control col-md-12"
-                   type="text" 
-                   ng-model="lastname" 
-                   lc-validation-bubble="" 
-                   validation-friendly-name="User surname" />
+            name="userSurname" 
+            class="form-control col-md-12"
+            type="text" 
+            ng-model="model.lastname" 
+            lc-validation-bubble="" 
+            validation-friendly-name="User surname" />
           </div>
         </div>
 
       </form>
       <!-- #Form -->
       
-        <div lc-validation-summary=""></div>
+      <div lc-validation-summary=""></div>
       
     </div>
   </div>

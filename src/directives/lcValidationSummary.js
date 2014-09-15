@@ -1,9 +1,6 @@
 ﻿lcValidationSummary.directive('lcValidationSummary', [function () {
 	return {
 		restrict: "A",
-		scope:{
-			elementName: '@lcValidationSummary'
-		},
 		require: "^lcValidationsContainer",
 		templateUrl: './src/directives/lcValidationSummary.html',
 

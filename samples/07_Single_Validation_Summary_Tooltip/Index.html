@@ -1,0 +1,77 @@
+<html>
+
+<head>
+  <title>lcValidationSummary - Sample 05 Single Validation Summary</title>
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../build/lcValidationSummary.css" />
+
+  <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+  <script src="../../build/lcvalidationsummary.js"></script>
+  <script src="../../build/lcvalidationSummary-tpl.js"></script>
+  <script src="app.js"></script>
+
+</head>
+
+<body ng-app="sampleApp" class="container">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-10">
+        <h2>
+          lcValidationSummary
+          <small>Sample 05 - Single Validation Summary</small>
+        </h2>
+      </div>
+      <div class="col-md-2">
+        <p style="margin-top:20px;">
+          <a href="../">
+            <button class="btn btn-default">
+              <span class="glyphicon glyphicon-circle-arrow-left"></span>
+              Back to Menu
+            </button>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="voffset6" ng-controller="sampleController" lc-validations-container="">
+    <form name="userForm">
+      <div class="form-group">
+        <label class=" control-label" for="userName">Name:</label>
+        <div class="">
+          <input id="userName" 
+          name="userName"
+          class="form-control col-md-12"
+          type="text"
+          ng-model="name"
+          ng-required="true"
+          lc-validation-bubble=""
+          validation-friendly-name="User name"/>
+        </div>
+        <div lc-single-control-validation-summary="userName" ></div>
+      </div>
+
+      <div class="form-group">
+        <label class=" control-label" for="userSurname">Surname:</label>
+        <div class="">
+          <input id="userSurname" 
+          name="userSurname"
+          class="form-control col-md-12"
+          type="text"
+          ng-model="lastname"
+          checktwofieldsmatch=""
+          fieldtomatchmodelproperty="userName" 
+          fieldtomatch="userNname"
+          ng-minlength="3"
+          lc-validation-bubble=""
+          validation-friendly-name="User surname"/>
+        </div>
+        <div lc-single-control-validation-summary="userSurname"></div>
+      </div>
+    </form>
+    <div lc-validation-summary=""></div>
+  </div>
+</body>
+
+</html>

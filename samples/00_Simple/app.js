@@ -2,7 +2,7 @@ var sampleApp = angular.module('sampleApp', ['lcValidationSummary'])
 
 .controller('sampleController', ['$scope', function sampleController($scope){	
   $scope.model = {
-    name: 'John',
-    lastname: 'Doe'
+    name: '',
+    lastname: ''
   }
 }]);

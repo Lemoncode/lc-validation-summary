@@ -1,0 +1,7 @@
+
+<div class='validation-summary-box' ng-show='filteredItems.length > 0'>
+  <ul id="errorListContainer" ng-show='!showOnlyFirstValidation'>
+    <li ng-repeat='item in filteredItems = (validationsSummary | filter: elementName)'>{{item.errorMessage}}</li>
+  </ul>
+  <p ng-show="showOnlyFirstValidation">{{filteredItems[0].errorMessage}}</p>
+</div>

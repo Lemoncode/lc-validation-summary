@@ -1,12 +1,12 @@
 <html>
 
 <head>
-  <title>lcValidationSummary - Sample 05 Single Validation Summary</title>
+  <title>lcValidationSummary - Sample 06 Single Validation Summary, All Validations</title>
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../../build/lcValidationSummary.css" />
 
-  <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+  <script src="https://code.angularjs.org/1.2.23/angular.js"></script>
   <script src="../../build/lcvalidationsummary.js"></script>
   <script src="../../build/lcvalidationSummary-tpl.js"></script>
   <script src="app.js"></script>
@@ -19,7 +19,7 @@
       <div class="col-md-10">
         <h2>
           lcValidationSummary
-          <small>Sample 05 - Single Validation Summary</small>
+          <small>Sample 06 - Single Validation Summary, All Validations</small>
         </h2>
       </div>
       <div class="col-md-2">
@@ -44,13 +44,13 @@
           name="userName"
           class="form-control col-md-12"
           type="text"
-          ng-model="name"
+          ng-model="model.name"
           ng-required="true"
           lc-validation-bubble=""
           validation-friendly-name="User name"/>
         </div>
+        <div lc-single-control-validation-summary="userName" ></div>
       </div>
-      <div lc-validation-summary="userName"></div>
 
       <div class="form-group">
         <label class=" control-label" for="userSurname">Surname:</label>
@@ -59,15 +59,15 @@
           name="userSurname"
           class="form-control col-md-12"
           type="text"
-          ng-model="lastname"
-          ng-required="true"
+          ng-model="model.lastname"
+          ng-maxlength="2"
+          ng-minlength="4"
           lc-validation-bubble=""
           validation-friendly-name="User surname"/>
         </div>
-        <div lc-validation-summary="userSurname"></div>
+        <div lc-single-control-validation-summary="userSurname"></div>
       </div>
     </form>
-    <div lc-validation-summary=""></div>
   </div>
 </body>
 

@@ -13,6 +13,7 @@
       
       this.$updateValidationResult = function (elementModel, friendlyControlName, validationCustomerrordirective, validationCustomErrorMessage) {
         var validationKeys = validationContainerService.extractValidations(elementModel);
+        $scope.validationMessages = [];
 
         angular.forEach(validationKeys, function (value, key) {
           var currentValidationKey = validationContainerService.buildValidationKey(elementModel.$name, value.validationType);

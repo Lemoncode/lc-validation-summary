@@ -9,8 +9,7 @@ describe('validationContainerService test', function () {
     validationContainerService = $injector.get('validationContainerService');
   });
 
-  /// extractValidations
-  // TODO: Change this test, extractValidation return a full array but all with passValue = false
+  /// extractValidations  
   it("when a control doesnt have any validation set, the method 'extractValidations' should return an empty array",function(){
     //Arrange
 
@@ -19,8 +18,7 @@ describe('validationContainerService test', function () {
     var validations = validationContainerService.extractValidations(ctrl);
 
     var allValidationsPassing = true;
-    
-    //validations.foreach(function(item) {
+        
     angular.forEach(validations, function(item, key) {
       if(item.passValidation == false) {
         allValidationsPassing = false;
@@ -40,6 +38,8 @@ describe('validationContainerService test', function () {
     // Act
     var ctrl = { $error:{required:true} };
     var validations = validationContainerService.extractValidations(ctrl);
+
+    // TODO: now we get all the validations combinatins but required entry is passValidation false
 
     //Assert
     var expectedExtractedValidations = [{validationType:'required',passValidation:false}];

@@ -15,25 +15,26 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/lib/jquery/dist/jquery.js',	
+      'test/lib/jquery/dist/jquery.js',
       'lib/angular/angular.js',
       'build/lcvalidationSummary.js',
       'build/lcvalidationSummary-tpl.js',
       'test/lib/angular-mocks/angular-mocks.js',
-      'test/*.js'      
+      'test/lib/underscore/underscore.js',
+      'test/*.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-      
+
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-    
+
     },
 
 

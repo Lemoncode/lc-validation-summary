@@ -53,19 +53,17 @@ lcValidationSummary.provider('validationContainerService', function () {
 
           angular.forEach(supportedValidations, function(supportedValidation, key) {
             var validationType = supportedValidation.type;
-                        
+
             // Breaking change angular newer versions, elementModel.$error[validationType]
             // will be undefined if it passes the validation
             // before we have this wrapped in an if like:
             //if (typeof elementModel.$error[validationType] !== 'undefined') {
-              
-              
-                validationItem = buildValidationItem(validationType,                    
-                      !elementModel.$error[validationType]
-                      );
 
-                validations.push(validationItem);
-            
+            validationItem = buildValidationItem(validationType,
+                  !elementModel.$error[validationType]
+                  );
+
+            validations.push(validationItem);            
           });
 
           return validations;

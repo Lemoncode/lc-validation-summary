@@ -9,34 +9,31 @@ describe('validationContainerService test', function () {
     validationContainerService = $injector.get('validationContainerService');
   });
 
-  /// extractValidations  
-  it("when a control doesnt have any validation set, the method 'extractValidations' should return an empty array",function(){
+  /// extractValidations
+  it("when calling extractValidations passing a control with empty validation,"+
+    "it returs an array with default supported validations with passValidation equals true",function(){
     //Arrange
+    var ctrl = { $error:{} };
+    var allValidationsPassing = true;
 
     // Act
-    var ctrl = { $error:{} };
     var validations = validationContainerService.extractValidations(ctrl);
 
-    var allValidationsPassing = true;
-        
-    angular.forEach(validations, function(item, key) {
-      if(item.passValidation == false) {
-        allValidationsPassing = false;
-      }
-    });    
-    
-    
+    var allValidationsPassing = _.every(validations, function(validation){
+      return validation.passValidation;
+    });
 
     //Assert
     expect(allValidationsPassing).toBeTruthy();
-    //expect(validations).toEqual([]);
   });
 
-  it("when a control just contains a 'required' validation, the method 'extractValidations' should return an an array containing the corresponding item",function(){
+  it("when calling extractValidations passing a control with 'required' validation,"+
+    "it returs an array with all default supported validations with passValidation equals true,"+
+    "except required validation with passValidation equals false",function(){
     // Arrange
+    var ctrl = { $error:{required:true} };
 
     // Act
-    var ctrl = { $error:{required:true} };
     var validations = validationContainerService.extractValidations(ctrl);
 
     // TODO: now we get all the validations combinatins but required entry is passValidation false
@@ -144,7 +141,7 @@ describe('validationContainerService test', function () {
     expect(validations).toEqual(expectedExtractedValidations);
   });
 });
-// #ValidationContainerService test 
+// #ValidationContainerService test
 
 // =validationContainerServiceProvider test
 describe("validationContainerService Provider test", function(){
@@ -234,4 +231,4 @@ describe("validationContainerService Provider test", function(){
   });
 
 });
-// #validationContainerServiceProvider test 
+// #validationContainerServiceProvider test

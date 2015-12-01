@@ -23,6 +23,22 @@ describe('validationContainerService test', function () {
   });
 
   it("when calling extractValidations passing a control with empty validation,"+
+    "it returns an array with default validations (required, pattern, maxlength and minlength) ",function(){
+    // Arrange
+    var ctrl = { $error:{} };
+
+    // Act
+    var validations = validationContainerService.extractValidations(ctrl);
+
+    //Assert
+    expect(validations.length).toEqual(4);
+    expect(validations[0].validationType).toEqual('required');
+    expect(validations[1].validationType).toEqual('pattern');
+    expect(validations[2].validationType).toEqual('maxlength');
+    expect(validations[3].validationType).toEqual('minlength');
+  });
+
+  it("when calling extractValidations passing a control with empty validation,"+
     "it returns an array with default supported validations with passValidation equals true",function(){
     //Arrange
     var ctrl = { $error:{} };
@@ -175,76 +191,160 @@ describe("validationContainerService Provider test", function(){
     });
   });
 
-  it('when configuring the validationContainerService to not to have any supportedValidation initially, the method extractValidations should return an empty array when the control where it was defined has validations set', function(){
-    //Arrange
+  it("when calling removeDefaultSupportedValidations, and we passing a control with empty validation"+
+    "extractValidations returns an empty array",function(){
+    // Arrange
+    var ctrl = { $error:{} };
 
-    //Act
-    var ctrl = { $error:{required:true, pattern:true, minlength:false, maxlength:true} };
+    // Act
     configProvider.removeDefaultSupportedValidations();
-    var validations = validationService.extractValidations(ctrl);
-
-    expect(validations).toEqual([]);
-  });
-
-  it('when adding a custom validation to the validationContainerService, the method extractValidations should return an array containgin the custom validation', function(){
-      //Arrange
-
-      //Act
-      var ctrl = { $error:{checktwofieldsmatch:true} };
-      configProvider.addValidation({type: 'checktwofieldsmatch', friendlyDescription: 'The fields must match'});
-      var validations = validationService.extractValidations(ctrl);
-      var expectedExtractedValidations =
-        [
-          {validationType:'checktwofieldsmatch',passValidation:false}
-        ];
-      expect(validations).toEqual(expectedExtractedValidations);
-    });
-
-  it("when adding a custom validation and setting this one plus a 'required' validation to an element should return an array containgin the custom and the 'required' validation", function(){
-    //Arrange
-
-    //Act
-    var ctrl = { $error:{required:true, checktwofieldsmatch:true} };
-    configProvider.addValidation({type: 'checktwofieldsmatch', friendlyDescription: 'The fields must match'});
-    var validations = validationService.extractValidations(ctrl);
-    var expectedExtractedValidations =
-      [
-        {validationType:'required',passValidation:false},
-        {validationType:'checktwofieldsmatch',passValidation:false}
-      ];
-    expect(validations).toEqual(expectedExtractedValidations);
-  });
-
-  it("when adding an invalid validation item should return an empty array", function(){
-    //Arrange
-
-    //Act
-    var ctrl = { $error:{invalidValidationName:true} };
-    configProvider.addValidation({invalidValidation:'invalidValidationName'});
-    var validations = validationService.extractValidations(ctrl);
 
     //Assert
+    var validations = validationService.extractValidations(ctrl);
     expect(validations).toEqual([]);
+  });
+
+  it("when calling addValidation passing an null custom validation, and we passing a control with empty validation"+
+    "extractValidations returns an array with default validations", function(){
+      //Arrange
+      var customValidation = null;
+      var ctrl = { $error:{} };
+
+      //Act
+      configProvider.addValidation(customValidation);
+
+      //Assert
+      var validations = validationService.extractValidations(ctrl);
+
+      expect(validations.length).toEqual(4);
+  });
+
+  it("when calling addValidation passing an undefined custom validation, and we passing a control with empty validation"+
+    "extractValidations returns an array with default validations", function(){
+      //Arrange
+      var customValidation = undefined;
+      var ctrl = { $error:{} };
+
+      //Act
+      configProvider.addValidation(customValidation);
+
+      //Assert
+      var validations = validationService.extractValidations(ctrl);
+
+      expect(validations.length).toEqual(4);
+  });
+
+  it("when calling addValidation passing an true custom validation, and we passing a control with empty validation"+
+    "extractValidations returns an array with default validations", function(){
+      //Arrange
+      var customValidation = true;
+      var ctrl = { $error:{} };
+
+      //Act
+      configProvider.addValidation(customValidation);
+
+      //Assert
+      var validations = validationService.extractValidations(ctrl);
+
+      expect(validations.length).toEqual(4);
+  });
+
+  it("when calling addValidation passing an false custom validation, and we passing a control with empty validation"+
+    "extractValidations returns an array with default validations", function(){
+      //Arrange
+      var customValidation = false;
+      var ctrl = { $error:{} };
+
+      //Act
+      configProvider.addValidation(customValidation);
+
+      //Assert
+      var validations = validationService.extractValidations(ctrl);
+
+      expect(validations.length).toEqual(4);
+  });
+
+  it("when calling addValidation passing an invalid custom validation, and we passing a control with empty validation"+
+    "extractValidations returns an array with default validations", function(){
+      //Arrange
+      var customValidation = { invalidValidation: 'invalidValidationName' };
+      var ctrl = { $error:{} };
+
+      //Act
+      configProvider.addValidation(customValidation);
+
+      //Assert
+      var validations = validationService.extractValidations(ctrl);
+
+      expect(validations.length).toEqual(4);
+  });
+
+  it("when calling addValidation passing a valid custom validation, and we passing a control with empty validation"+
+    "extractValidations returns an array with length equals 5", function(){
+      //Arrange
+      var customValidation = {type: 'checktwofieldsmatch', friendlyDescription: 'The fields must match'};
+      var ctrl = { $error:{} };
+
+      //Act
+      configProvider.addValidation(customValidation);
+
+      //Assert
+      var validations = validationService.extractValidations(ctrl);
+
+      expect(validations.length).toEqual(5);
+      expect(validations[4].validationType).toEqual('checktwofieldsmatch');
   });
 
   //buildValidationSummaryEntry
+  it("when calling buildValidationSummaryEntry passing validationKey equals 'validationKeyTest', controlFriendlyName equals 'friendlyNameTest'" +
+    "and validation equals 'validationTest' without adding this custom validation" +
+    "it returns a correctly built item like { key: 'validationKeyTest', errorMessage: 'friendlyNameTest: '}", function(){
+      //Arrange
+      var validationKey = 'validationKeyTest';
+      var controlFriendlyName = 'friendlyNameTest';
+      var validation = 'validationTest';
 
-  it("when adding a custom validation, the metod 'buildValidationSummaryEntry' should return a correctly built item", function(){
-    //Arrange
-    var validationKey="checktwofieldsmatch$ctrltest";
-    var controlFriendlyName= "inputTest";
-    var validation="checktwofieldsmatch";
-    var customErrorDirective="checktwofieldsmatch";
-    var customErrorMessage="The fields must match";
+      //Act
+      var item = validationService.buildValidationSummaryEntry(validationKey, controlFriendlyName, validation, null, null);
 
-    //Act
-    configProvider.addValidation({type: 'checktwofieldsmatch', friendlyDescription: 'The fields must match'});
-    var item=validationService.buildValidationSummaryEntry(validationKey,controlFriendlyName, validation, customErrorDirective, customErrorMessage);
-
-    //Assert
-    var expetedItem={key:"checktwofieldsmatch$ctrltest", errorMessage:"The fields must match"};
-    expect(item).toEqual(expetedItem);
+      //Assert
+      expect(item).toEqual({ key: validationKey, errorMessage: 'friendlyNameTest: '});
   });
 
+  it("when calling buildValidationSummaryEntry passing validationKey equals 'validationKeyTest', controlFriendlyName equals 'friendlyNameTest'" +
+    "and validation equals 'validationTest' and adding this custom validation" +
+    "it returns a correctly built item like { key: 'validationKeyTest', errorMessage: 'friendlyNameTest: friendlyDescription test'}", function(){
+      //Arrange
+      var validationKey = 'validationKeyTest';
+      var controlFriendlyName = 'friendlyNameTest';
+      var validation = 'validationTest';
+      var customValidation = {type: validation, friendlyDescription: 'friendlyDescription test'};
+
+      //Act
+      configProvider.addValidation(customValidation);
+      var item = validationService.buildValidationSummaryEntry(validationKey, controlFriendlyName, validation, null, null);
+
+      //Assert
+      expect(item).toEqual({ key: validationKey, errorMessage: 'friendlyNameTest: friendlyDescription test'});
+  });
+
+  it("when calling buildValidationSummaryEntry passing validationKey equals 'validationKeyTest', controlFriendlyName equals 'friendlyNameTest'" +
+    "validation equals 'validationTest', validationCustomErrorDirective equals validation and validationCustomErrorMessage equals 'Test'" +
+    "it returns a correctly built item like { key: 'validationKeyTest', errorMessage: 'Test'}", function(){
+      //Arrange
+      var validationKey = 'validationKeyTest';
+      var controlFriendlyName = 'friendlyNameTest';
+      var validation = 'validationTest';
+      var validationCustomErrorDirective = 'validationTest';
+      var validationCustomErrorMessage = 'Test';
+      var customValidation = {type: validation, friendlyDescription: 'friendlyDescription test'};
+
+      //Act
+      configProvider.addValidation(customValidation);
+      var item = validationService.buildValidationSummaryEntry(validationKey, controlFriendlyName, validation, validationCustomErrorDirective, validationCustomErrorMessage);
+
+      //Assert
+      expect(item).toEqual({ key: validationKey, errorMessage: 'Test'});
+  });
 });
 // #validationContainerServiceProvider test

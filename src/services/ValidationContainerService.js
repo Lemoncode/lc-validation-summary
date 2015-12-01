@@ -25,7 +25,7 @@ lcValidationSummary.provider('validationContainerService', function () {
     },
 
     addValidation: function(validation) {
-      if(validation.type!='undefined'&& validation.friendlyDescription!='undefined'){
+      if(validation && validation.type && validation.friendlyDescription){
         supportedValidations.push(validation);
       }
     },
@@ -63,7 +63,7 @@ lcValidationSummary.provider('validationContainerService', function () {
                   !elementModel.$error[validationType]
                   );
 
-            validations.push(validationItem);            
+            validations.push(validationItem);
           });
 
           return validations;

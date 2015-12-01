@@ -9,9 +9,21 @@ describe('validationContainerService test', function () {
     validationContainerService = $injector.get('validationContainerService');
   });
 
-  /// extractValidations
+  it("when calling extractValidations passing an empty control,"+
+    "it returns an empty array",function(){
+    // Arrange
+    var ctrl = { };
+
+    // Act
+    var validations = validationContainerService.extractValidations(ctrl);
+
+    //Assert
+    var expectedExtractedValidations = [];
+    expect(validations).toEqual(expectedExtractedValidations);
+  });
+
   it("when calling extractValidations passing a control with empty validation,"+
-    "it returs an array with default supported validations with passValidation equals true",function(){
+    "it returns an array with default supported validations with passValidation equals true",function(){
     //Arrange
     var ctrl = { $error:{} };
     var allValidationsPassing = true;
@@ -19,16 +31,64 @@ describe('validationContainerService test', function () {
     // Act
     var validations = validationContainerService.extractValidations(ctrl);
 
+    //Assert
     var allValidationsPassing = _.every(validations, function(validation){
       return validation.passValidation;
     });
 
+    expect(allValidationsPassing).toBeTruthy();
+  });
+
+  it("when calling extractValidations passing a control with 'required' validation equals undefined,"+
+    "it returns an array with all default supported validations with passValidation equals true",function(){
+    // Arrange
+    var ctrl = { $error:{required:undefined} };
+
+    // Act
+    var validations = validationContainerService.extractValidations(ctrl);
+
     //Assert
+    var allValidationsPassing = _.every(validations, function(validation){
+      return validation.passValidation;
+    });
+
+    expect(allValidationsPassing).toBeTruthy();
+  });
+
+  it("when calling extractValidations passing a control with 'required' validation equals null,"+
+    "it returns an array with all default supported validations with passValidation equals true",function(){
+    // Arrange
+    var ctrl = { $error:{required:null} };
+
+    // Act
+    var validations = validationContainerService.extractValidations(ctrl);
+
+    //Assert
+    var allValidationsPassing = _.every(validations, function(validation){
+      return validation.passValidation;
+    });
+
+    expect(allValidationsPassing).toBeTruthy();
+  });
+
+  it("when calling extractValidations passing a control with 'required' validation equals false,"+
+    "it returns an array with all default supported validations with passValidation equals true",function(){
+    // Arrange
+    var ctrl = { $error:{required:false} };
+
+    // Act
+    var validations = validationContainerService.extractValidations(ctrl);
+
+    //Assert
+    var allValidationsPassing = _.every(validations, function(validation){
+      return validation.passValidation;
+    });
+
     expect(allValidationsPassing).toBeTruthy();
   });
 
   it("when calling extractValidations passing a control with 'required' validation,"+
-    "it returs an array with all default supported validations with passValidation equals true,"+
+    "it returns an array with all default supported validations with passValidation equals true,"+
     "except required validation with passValidation equals false",function(){
     // Arrange
     var ctrl = { $error:{required:true} };
@@ -36,109 +96,65 @@ describe('validationContainerService test', function () {
     // Act
     var validations = validationContainerService.extractValidations(ctrl);
 
-    // TODO: now we get all the validations combinatins but required entry is passValidation false
-
     //Assert
-    var expectedExtractedValidations = [{validationType:'required',passValidation:false}];
-    expect(validations).toEqual(expectedExtractedValidations);
+    var expectedFailedValidations = _.where(validations, { passValidation: false});
+
+    expect(expectedFailedValidations.length).toEqual(1);
+    expect(expectedFailedValidations[0].validationType).toEqual('required');
   });
 
-  it("when a control contains a 'required' and 'pattern' validations, the method 'extractValidations' should return an an array containing the corresponding items",function(){
+  it("when calling extractValidations passing a control with 'required' and 'pattern' validations,"+
+    "it returns an array with all default supported validations with passValidation equals true,"+
+    "except required and pattern validations with passValidation equals false",function(){
     // Arrange
-
-    // Act
     var ctrl = { $error:{required:true, pattern:true} };
-    var validations = validationContainerService.extractValidations(ctrl);
-
-    //Assert
-    var expectedExtractedValidations = [{validationType:'required',passValidation:false},{validationType:'pattern', passValidation:false}];
-    expect(validations).toEqual(expectedExtractedValidations);
-  });
-
-  it("when a control contains a 'required', 'pattern' and 'minlength' validations, the method 'extractValidations' should return an an array containing the corresponding items",function(){
-    // Arrange
 
     // Act
-    var ctrl = { $error:{required:true, pattern:true, minlength:false} };
     var validations = validationContainerService.extractValidations(ctrl);
 
     //Assert
-    var expectedExtractedValidations = [{validationType:'required',passValidation:false},{validationType:'pattern', passValidation:false}, {validationType:'minlength', passValidation:true}];
-    expect(validations).toEqual(expectedExtractedValidations);
+    var expectedFailedValidations = _.where(validations, { passValidation: false});
+
+    expect(expectedFailedValidations.length).toEqual(2);
+    expect(expectedFailedValidations[0].validationType).toEqual('required');
+    expect(expectedFailedValidations[1].validationType).toEqual('pattern');
   });
 
-  it("when a control contains a 'required', 'pattern', 'minlength' and 'maxlength' validations, the method 'extractValidations' should return an an array containing the corresponding items",function(){
+  it("when calling extractValidations passing a control with 'required', 'pattern' and 'minlength' validations,"+
+    "it returns an array with all default supported validations with passValidation equals true,"+
+    "except required, pattern and minlength validations with passValidation equals false",function(){
     // Arrange
+    var ctrl = { $error:{required:true, pattern:true, minlength:true} };
 
     // Act
-    var ctrl = { $error:{required:true, pattern:true, minlength:false, maxlength:true} };
     var validations = validationContainerService.extractValidations(ctrl);
 
     //Assert
-    var expectedExtractedValidations =
-    [
-    {validationType:'required',	passValidation:false},
-    {validationType:'pattern', 	passValidation:false},
-    {validationType:'maxlength',passValidation:false},
-    {validationType:'minlength',passValidation:true}
-    ];
-    expect(validations).toEqual(expectedExtractedValidations);
+    var expectedFailedValidations = _.where(validations, { passValidation: false});
+
+    expect(expectedFailedValidations.length).toEqual(3);
+    expect(expectedFailedValidations[0].validationType).toEqual('required');
+    expect(expectedFailedValidations[1].validationType).toEqual('pattern');
+    expect(expectedFailedValidations[2].validationType).toEqual('minlength');
   });
 
-
-  it("when a control contains a undefined validation error, the method 'extractValidations' should return an empty array",function(){
+  it("when calling extractValidations passing a control with 'required', 'pattern', 'minlength' and 'maxlength' validations,"+
+    "it returns an array with all default supported validations with passValidation equals true,"+
+    "except required, pattern, minlength and maxlength validations with passValidation equals false",function(){
     // Arrange
+    var ctrl = { $error:{required:true, pattern:true, maxlength:true, minlength:true} };
 
     // Act
-    var ctrl = { $error:{required:undefined} };
     var validations = validationContainerService.extractValidations(ctrl);
 
     //Assert
-    expect(validations).toEqual([]);
-  });
+    var expectedFailedValidations = _.where(validations, { passValidation: false});
 
-  it("when a control contains an undefined and a defined validation error, the method 'extractValidations' should return an array containg the corresponding item to the defined validation",function(){
-    // Arrange
-
-    // Act
-    var ctrl = { $error:{required:undefined, maxlength:true} };
-    var validations = validationContainerService.extractValidations(ctrl);
-
-    //Assert
-    var expectedExtractedValidations =
-      [
-        {validationType:'maxlength',passValidation:false}
-      ];
-    expect(validations).toEqual(expectedExtractedValidations);
-  });
-
-
-  it("when a control contains a defined and an undefined validation error, the method 'extractValidations' should return an array containg the corresponding item to the defined validation",function(){
-    // Arrange
-
-    // Act
-    var ctrl = { $error:{required:true, maxlength:undefined} };
-    var validations = validationContainerService.extractValidations(ctrl);
-
-    //Assert
-    var expectedExtractedValidations =
-    [
-    {validationType:'required',passValidation:false}
-    ];
-    expect(validations).toEqual(expectedExtractedValidations);
-  });
-
-
-  it('should return an empty array and a WARN message when validationbuble has been defined to a DOM element that doesnt contain a $error property',function(){
-    // Arrange
-
-    // Act
-    var ctrl = { };
-    var validations = validationContainerService.extractValidations(ctrl);
-
-    //Assert
-    var expectedExtractedValidations = [];
-    expect(validations).toEqual(expectedExtractedValidations);
+    expect(expectedFailedValidations.length).toEqual(4);
+    expect(expectedFailedValidations[0].validationType).toEqual('required');
+    expect(expectedFailedValidations[1].validationType).toEqual('pattern');
+    expect(expectedFailedValidations[2].validationType).toEqual('maxlength');
+    expect(expectedFailedValidations[3].validationType).toEqual('minlength');
   });
 });
 // #ValidationContainerService test

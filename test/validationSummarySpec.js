@@ -52,8 +52,8 @@ describe('validationSummary Spec', function () {
               "<form name='personInformation'>"+
               "<input type='text' id='personName' name='personName' ng-model='person.name'"+
               "ng-required='true' lc-validation-bubble='' validation-friendly-name='Name'/>"+
-              "<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-              "ng-minlength='4' lc-validation-bubble='' validation-friendly-name='Name'/>"+
+              "<input type='text' id='personSurName' name='personSurName' ng-model='person.surName'"+
+              "ng-minlength='4' lc-validation-bubble='' validation-friendly-name='SurName'/>"+
               "</form>" +
               "<div lc-validation-summary=''></div>" +
             "</div>" +

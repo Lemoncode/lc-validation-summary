@@ -1,4 +1,4 @@
-describe('validationSummary Spec', function () {
+describe('validationContainer Spec', function () {
 
   var scope;
   var compile;
@@ -69,13 +69,13 @@ describe('validationSummary Spec', function () {
 
   it('Should add two validationmessages when using two validations in a form and forcing them fail ',function(){
     // Arrange
-    var html = "<div ng-init='person = {name: 2}'>" +
+    var html = "<div ng-init='person = {name: 2, surName: 3}'>" +
             "<div lc-validations-container=''>" +
               "<form name='personInformation'>"+
               "<input type='text' id='personName' name='personName' ng-model='person.name'"+
               "ng-required='true' lc-validation-bubble='' validation-friendly-name='Name'/>"+
-              "<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-              "ng-minlength='4' lc-validation-bubble='' validation-friendly-name='Name'/>"+
+              "<input type='text' id='personSurName' name='personSurName' ng-model='person.surName'"+
+              "ng-minlength='4' lc-validation-bubble='' validation-friendly-name='SurName'/>"+
               "</form>" +
               "<div lc-validation-summary=''></div>" +
             "</div>" +
@@ -100,13 +100,13 @@ describe('validationSummary Spec', function () {
 
   it('Should add one validationmessage when using two validations in a form and forcing just one to fail ',function(){
     // Arrange
-    var html = "<div ng-init='person = {name: 2}'>" +
+    var html = "<div ng-init='person = {name: 2, surName: 3}'>" +
             "<div lc-validations-container=''>" +
               "<form name='personInformation'>"+
               "<input type='text' id='personName' name='personName' ng-model='person.name'"+
               "ng-required='true' lc-validation-bubble='' validation-friendly-name='Name'/>"+
-              "<input type='text' id='personName' name='personName' ng-model='person.surName'"+
-              "ng-minlength='4' lc-validation-bubble='' validation-friendly-name='Name'/>"+
+              "<input type='text' id='personSurName' name='personSurName' ng-model='person.surName'"+
+              "ng-minlength='4' lc-validation-bubble='' validation-friendly-name='SurName'/>"+
               "</form>" +
               "<div lc-validation-summary=''></div>" +
             "</div>" +

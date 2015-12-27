@@ -25,7 +25,7 @@ lcValidationSummary.provider('validationContainerService', function () {
     },
 
     addValidation: function(validation) {
-      if(validation.type!='undefined'&& validation.friendlyDescription!='undefined'){
+      if(validation && validation.type && validation.friendlyDescription){
         supportedValidations.push(validation);
       }
     },
@@ -53,12 +53,17 @@ lcValidationSummary.provider('validationContainerService', function () {
 
           angular.forEach(supportedValidations, function(supportedValidation, key) {
             var validationType = supportedValidation.type;
-            if (typeof elementModel.$error[validationType] !== 'undefined') {
-                validationItem = buildValidationItem(validationType,
-                    (elementModel.$error[validationType] == false));
 
-                validations.push(validationItem);
-            }
+            // Breaking change angular newer versions, elementModel.$error[validationType]
+            // will be undefined if it passes the validation
+            // before we have this wrapped in an if like:
+            //if (typeof elementModel.$error[validationType] !== 'undefined') {
+
+            validationItem = buildValidationItem(validationType,
+                  !elementModel.$error[validationType]
+                  );
+
+            validations.push(validationItem);
           });
 
           return validations;

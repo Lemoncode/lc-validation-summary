@@ -73,7 +73,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['web']);
+  grunt.registerTask('default', ['build', 'web']);
 
   grunt.registerTask('build', ['clean', 'ngtemplates', 'concat', 'ngmin','uglify', 'copy']);
 
